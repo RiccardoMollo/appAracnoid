@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Livello"></activity>
+        <activity android:name=".Livello" />
+        <activity android:name=".Risultati"></activity>
     </application>
 
 </manifest>
