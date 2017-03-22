@@ -1,5 +1,6 @@
 package com.example.utente.apparacnoid;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
@@ -14,7 +15,6 @@ public class Livello extends AppCompatActivity {
     int i=0;
 
     private static TextView txtCountDown;
-    private static CountDownTimer countDownTimer = null;
     private static final long startTime = 50 * 1000;
     private static final long interval = 1000;
 
@@ -36,7 +36,7 @@ public class Livello extends AppCompatActivity {
 
 // INIZIALIZZAZIONE VARIABILE TIMER
         txtCountDown = (TextView) findViewById(R.id.txtCountDown);
-        countDownTimer = new MyCountDownTimer(startTime, interval, this);
+        CountDownTimer countDownTimer = new MyCountDownTimer(startTime, interval, this);
         if(txtCountDown!=null){
             txtCountDown.setText(String.valueOf(""+ startTime / 1000));
         }
@@ -44,14 +44,29 @@ public class Livello extends AppCompatActivity {
 
     }
 
+
     public void pressSend(View view){
         EditText et = (EditText) findViewById(R.id.parolaInserita);
-        et.setText(null);
-        et.setHint("inserisci la parola");
-        TextView counter = (TextView) findViewById(R.id.counter);
+        TextView tv = (TextView) findViewById(R.id.letter);
+
+        String confronto = tv.getText().toString();
+
         String parolaInserita= et.getText().toString();
+        et.setHint("inserisci la parola");
+
+
+        et.setText(null);
+
+        TextView counter = (TextView) findViewById(R.id.counter);
+        if (parolaInserita.startsWith(confronto)){
             i++;
             counter.setText(Integer.toString(i));
+        }
+        else{
+            et.setHint("parola non valida!");
+            counter.setText(Integer.toString(i));
+        }
+
 
         if (i==5){
             Intent intent = new Intent (this, Risultati.class);
