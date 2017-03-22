@@ -52,8 +52,16 @@ public class MainActivity extends AppCompatActivity {
         editor.putInt("colore",colore);
         editor.apply();
 
-        Intent intent = new Intent (this, Livello.class);
-        startActivity(intent);
+        if (nome_et.getText().toString().matches("")) {
+            //Intent intent = new Intent(this, Livello.class);
+            //startActivity(intent);
+            nome_et.setHint("INSERIRE NOME UTENTE");
+        }
+        else {
+
+            Intent intent = new Intent(this, Livello.class);
+            startActivity(intent);
+        }
     }
 
 }
