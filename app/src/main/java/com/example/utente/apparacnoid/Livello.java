@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 public class Livello extends AppCompatActivity {
     int i=0;
+    int puntiLettera=0;
+    int puntiParole=0;
+    int puntiTempo;
 
     private static TextView txtCountDown;
     private static final long startTime = 50 * 1000;
@@ -48,19 +51,21 @@ public class Livello extends AppCompatActivity {
     public void pressSend(View view){
         EditText et = (EditText) findViewById(R.id.parolaInserita);
         TextView tv = (TextView) findViewById(R.id.letter);
-
         String confronto = tv.getText().toString();
-
         String parolaInserita= et.getText().toString();
+        puntiLettera+= (parolaInserita.length()*10);
         et.setHint("inserisci la parola");
-
-
+        //String punti = String.valueOf(puntiLettera);
+        // et.setHint(punti);
         et.setText(null);
 
         TextView counter = (TextView) findViewById(R.id.counter);
         if (parolaInserita.startsWith(confronto)){
             i++;
             counter.setText(Integer.toString(i));
+            puntiParole=20*i;
+            //String punti = String.valueOf(puntiParole);
+            //et.setHint(punti);
         }
         else{
             et.setHint("parola non valida!");
@@ -69,6 +74,7 @@ public class Livello extends AppCompatActivity {
 
 
         if (i==5){
+            int puntiLivello =puntiLettera+puntiParole;
             Intent intent = new Intent (this, Risultati.class);
             startActivity(intent);
         }
@@ -88,6 +94,7 @@ public class Livello extends AppCompatActivity {
         @Override
         public void onFinish() {
             if(txtCountDown!=null){
+                int puntiLivello = puntiLettera+puntiParole;
                 Intent intent = new Intent (c, Risultati.class);
                 startActivity(intent);
             }
