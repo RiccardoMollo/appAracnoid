@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public void change(View view) {
         //scegli_colore.getBackground().setColorFilter(lista_colori[i], PorterDuff.Mode.SRC_ATOP);
         colore = lista_colori[i];
-        scegli_colore.getBackground().setTint(colore);
+        scegli_colore.setBackgroundColor(colore);
         i++;
         if(i==3){
             i=0;
