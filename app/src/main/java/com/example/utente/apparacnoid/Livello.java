@@ -3,6 +3,7 @@ package com.example.utente.apparacnoid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class Livello extends AppCompatActivity {
     private static TextView txtCountDown;
     private static final long startTime = 20 * 1000;
     private static final long interval = 1000;
+    CountDownTimer countDownTimer;
 
 
     @Override
@@ -42,8 +44,9 @@ public class Livello extends AppCompatActivity {
         tv.setText(chars[(int) (Math.random() * 17)]);
 
 // INIZIALIZZAZIONE VARIABILE TIMER
+
         txtCountDown = (TextView) findViewById(R.id.txtCountDown);
-        CountDownTimer countDownTimer = new MyCountDownTimer(startTime, interval, this);
+        countDownTimer = new MyCountDownTimer(startTime, interval, this);
         if(txtCountDown!=null){
             txtCountDown.setText(String.valueOf(""+ startTime / 1000));
         }
@@ -96,17 +99,25 @@ public class Livello extends AppCompatActivity {
 // INSERIMENTO DELLA QUINTA PAROLA //
 
         if (contatore==5){
+
+            countDownTimer.cancel();
+
+            SharedPreferences settings = getSharedPreferences("Settings", 0);
+            SharedPreferences.Editor editor = settings.edit();
+            int livello =  settings.getInt("livello",0);
+
             int puntiLivello =puntiLettera+puntiParole;
             Intent intent = new Intent (this, Risultati.class);
 
+           // String messageLivello=String.valueOf(livello);
             String messageParole = String.valueOf(contatore);
             String messagePunti  = String.valueOf(puntiLivello);
 
             intent.putExtra("messagePunti", messagePunti);
             intent.putExtra("messageParole", messageParole);
-            if(txtCountDown != null) {
-                txtCountDown = null;
-            }
+           // intent.putExtra("messageLivello",messageLivello);
+
+
             startActivity(intent);
             finish();
         }
@@ -154,5 +165,10 @@ public class Livello extends AppCompatActivity {
     }
 
 // FINE TIMER
+
+
+
+
+
 
 }
