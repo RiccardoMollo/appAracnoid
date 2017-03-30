@@ -1,29 +1,31 @@
 package com.example.utente.apparacnoid;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class Livello extends AppCompatActivity {
-    int i=0;
+    int contatore=0;
     int puntiLettera=0;
     int puntiParole=0;
-    int puntiTempo;
+    //int puntiTempo;
+
 
     private static TextView txtCountDown;
-    private static final long startTime = 50 * 1000;
+    private static final long startTime = 20 * 1000;
     private static final long interval = 1000;
+    CountDownTimer countDownTimer;
 
 
     @Override
@@ -42,13 +44,13 @@ public class Livello extends AppCompatActivity {
         tv.setText(chars[(int) (Math.random() * 17)]);
 
 // INIZIALIZZAZIONE VARIABILE TIMER
+
         txtCountDown = (TextView) findViewById(R.id.txtCountDown);
-        CountDownTimer countDownTimer = new MyCountDownTimer(startTime, interval, this);
+        countDownTimer = new MyCountDownTimer(startTime, interval, this);
         if(txtCountDown!=null){
             txtCountDown.setText(String.valueOf(""+ startTime / 1000));
         }
         countDownTimer.start();
-
         et.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -67,36 +69,57 @@ public class Livello extends AppCompatActivity {
         });
     }
 
+// REAZIONI ALLA PRESSIONE DEL TASTO DI INVIO
+
 
     public void pressSend(View view){
         EditText et = (EditText) findViewById(R.id.parolaInserita);
         TextView tv = (TextView) findViewById(R.id.letter);
         String confronto = tv.getText().toString();
         String parolaInserita= et.getText().toString();
-        puntiLettera+= (parolaInserita.length()*10);
-        et.setHint("inserisci la parola");
+                et.setHint("inserisci la parola");
         //String punti = String.valueOf(puntiLettera);
         // et.setHint(punti);
         et.setText(null);
 
         TextView counter = (TextView) findViewById(R.id.counter);
         if (parolaInserita.startsWith(confronto)){
-            i++;
-            counter.setText(Integer.toString(i));
-            puntiParole=20*i;
+            puntiLettera+= (parolaInserita.length()*10);
+            contatore++;
+            counter.setText(Integer.toString(contatore));
+            puntiParole=20*contatore;
             //String punti = String.valueOf(puntiParole);
             //et.setHint(punti);
         }
         else{
             et.setHint("parola non valida!");
-            counter.setText(Integer.toString(i));
+            counter.setText(Integer.toString(contatore));
         }
 
+// INSERIMENTO DELLA QUINTA PAROLA //
 
-        if (i==5){
+        if (contatore==5){
+
+            countDownTimer.cancel();
+
+            SharedPreferences settings = getSharedPreferences("Settings", 0);
+            SharedPreferences.Editor editor = settings.edit();
+            int livello =  settings.getInt("livello",0);
+
             int puntiLivello =puntiLettera+puntiParole;
             Intent intent = new Intent (this, Risultati.class);
+
+           // String messageLivello=String.valueOf(livello);
+            String messageParole = String.valueOf(contatore);
+            String messagePunti  = String.valueOf(puntiLivello);
+
+            intent.putExtra("messagePunti", messagePunti);
+            intent.putExtra("messageParole", messageParole);
+           // intent.putExtra("messageLivello",messageLivello);
+
+
             startActivity(intent);
+            finish();
         }
     }
 
@@ -111,12 +134,23 @@ public class Livello extends AppCompatActivity {
             this.c = c;
         }
 
+
+// IL TIMER RAGGIUNGE LO ZERO //
         @Override
         public void onFinish() {
             if(txtCountDown!=null){
                 int puntiLivello = puntiLettera+puntiParole;
+
                 Intent intent = new Intent (c, Risultati.class);
+
+                String messageParole = String.valueOf(contatore);
+                String messagePunti  = String.valueOf(puntiLivello);
+
+                intent.putExtra("messagePunti", messagePunti);
+                intent.putExtra("messageParole", messageParole);
+
                 startActivity(intent);
+                finish();
             }
         }
 
@@ -131,5 +165,10 @@ public class Livello extends AppCompatActivity {
     }
 
 // FINE TIMER
+
+
+
+
+
 
 }

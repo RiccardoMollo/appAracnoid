@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
         editor.putInt("colore",colore);
         editor.apply();
+        editor.putInt("livello",1);
+        editor.apply();
 
         if (nome_et.getText().toString().matches("")) {
             //Intent intent = new Intent(this, Livello.class);
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, Livello.class);
             startActivity(intent);
+
         }
     }
 

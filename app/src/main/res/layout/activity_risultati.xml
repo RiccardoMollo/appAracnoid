@@ -14,11 +14,36 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingLeft="50dp"
-        android:id="@+id/bho"
+        android:id="@+id/titolo"
+        android:textSize="32sp"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:id="@+id/puntiLivello"
+        android:textSize="32sp"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:id="@+id/numeroParole"
         android:textSize="32sp"
         />
 
+    <Button
+        android:id="@+id/livelloSuccessivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Avanti"
+        android:onClick="newLevel"
 
+        />
 
 
 </LinearLayout>
