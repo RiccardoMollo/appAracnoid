@@ -38,8 +38,8 @@ public class Livello extends AppCompatActivity {
 
         TextView tv = (TextView) findViewById(R.id.letter);
 
-        String[] chars = {"a","b","c","d","e","f","g","i","l","m","n","o","p","r","s","t","u","v","z"};
-        tv.setText(chars[(int) (Math.random() * 19)]);
+        String[] chars = {"a","b","c","d","e","f","g","i","l","m","n","o","p","r","s","t"};
+        tv.setText(chars[(int) (Math.random() * 17)]);
 
 // INIZIALIZZAZIONE VARIABILE TIMER
         txtCountDown = (TextView) findViewById(R.id.txtCountDown);
