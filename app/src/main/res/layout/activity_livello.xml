@@ -59,6 +59,7 @@
             android:id="@+id/parolaInserita"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:inputType="textCapSentences"
             android:hint="inserisci la parola"
 
 

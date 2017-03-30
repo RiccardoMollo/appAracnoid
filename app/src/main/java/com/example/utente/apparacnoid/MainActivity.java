@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, Livello.class);
             startActivity(intent);
+            finish();
         }
     }
 
