@@ -38,7 +38,7 @@ public class Livello extends AppCompatActivity {
 
         TextView tv = (TextView) findViewById(R.id.letter);
 
-        String[] chars = {"a","b","c","d","e","f","g","i","l","m","n","o","p","r","s","t"};
+        String[] chars = {"A","B","C","D","E","F","G","I","L","M","N","O","P","R","S","T"};
         tv.setText(chars[(int) (Math.random() * 17)]);
 
 // INIZIALIZZAZIONE VARIABILE TIMER
