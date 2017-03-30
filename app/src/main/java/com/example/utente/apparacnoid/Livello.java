@@ -26,6 +26,7 @@ public class Livello extends AppCompatActivity {
     private static final long startTime = 20 * 1000;
     private static final long interval = 1000;
     CountDownTimer countDownTimer;
+    WordsDataSource dizionario;
 
 
     @Override
@@ -34,6 +35,8 @@ public class Livello extends AppCompatActivity {
         setContentView(R.layout.activity_livello);
 
         EditText et = (EditText) findViewById(R.id.parolaInserita);
+        dizionario = new WordsDataSource(this);
+        dizionario.open();
 
         et.requestFocus();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
@@ -84,12 +87,18 @@ public class Livello extends AppCompatActivity {
 
         TextView counter = (TextView) findViewById(R.id.counter);
         if (parolaInserita.startsWith(confronto)){
-            puntiLettera+= (parolaInserita.length()*10);
-            contatore++;
-            counter.setText(Integer.toString(contatore));
-            puntiParole=20*contatore;
-            //String punti = String.valueOf(puntiParole);
-            //et.setHint(punti);
+            if(dizionario.isCorrectedWord(parolaInserita)){
+                puntiLettera+= (parolaInserita.length()*10);
+                contatore++;
+                counter.setText(Integer.toString(contatore));
+                puntiParole=20*contatore;
+                //String punti = String.valueOf(puntiParole);
+                //et.setHint(punti);
+            }
+           else{
+                et.setHint("parola non valida!");
+                counter.setText(Integer.toString(contatore));
+            }
         }
         else{
             et.setHint("parola non valida!");
