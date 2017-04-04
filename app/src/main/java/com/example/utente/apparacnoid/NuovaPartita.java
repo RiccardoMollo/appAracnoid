@@ -3,23 +3,17 @@ package com.example.utente.apparacnoid;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.graphics.Color;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
+public class NuovaPartita extends AppCompatActivity {
 
     EditText nome_et;
     Button scegli_colore;
     Button avvia;
-    WordsDataSource dizionario;
     int[] lista_colori= new int[]{Color.argb(255,200,0,0),Color.argb(255,0,255,0),Color.argb(255,0,0,255)};
     int i=0;
     int colore=0;
@@ -27,20 +21,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_nuovapartita);
 
         nome_et=(EditText) findViewById(R.id.nome_et);
         scegli_colore=(Button) findViewById(R.id.scegli_colore);
         avvia = (Button) findViewById(R.id.inizia);
-        dizionario = new WordsDataSource(this);
-        dizionario.open();
-        try {
-            dizionario.fillDictionary(this);
-            nome_et.setHint("dizionario riempito");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
 
     }
 
@@ -55,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start (View view){
+        //salva il nome del giocatore e il colore scelto
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("nome",nome_et.getText().toString() );

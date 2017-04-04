@@ -26,7 +26,6 @@ public class Livello extends AppCompatActivity {
     private static final long startTime = 20 * 1000;
     private static final long interval = 1000;
     CountDownTimer countDownTimer;
-    WordsDataSource dizionario;
 
 
     @Override
@@ -35,8 +34,6 @@ public class Livello extends AppCompatActivity {
         setContentView(R.layout.activity_livello);
 
         EditText et = (EditText) findViewById(R.id.parolaInserita);
-        dizionario = new WordsDataSource(this);
-        dizionario.open();
 
         et.requestFocus();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
@@ -54,22 +51,6 @@ public class Livello extends AppCompatActivity {
             txtCountDown.setText(String.valueOf(""+ startTime / 1000));
         }
         countDownTimer.start();
-        et.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Log.d("EditTextListener", "beforeTextChanged "+charSequence.toString());
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Log.d("EditTextListener", "onTextChanged "+charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                Log.d("EditTextListener", "afterTextChanged "+editable.toString());
-            }
-        });
     }
 
 // REAZIONI ALLA PRESSIONE DEL TASTO DI INVIO
@@ -87,18 +68,12 @@ public class Livello extends AppCompatActivity {
 
         TextView counter = (TextView) findViewById(R.id.counter);
         if (parolaInserita.startsWith(confronto)){
-            if(dizionario.isCorrectedWord(parolaInserita)){
                 puntiLettera+= (parolaInserita.length()*10);
                 contatore++;
                 counter.setText(Integer.toString(contatore));
                 puntiParole=20*contatore;
                 //String punti = String.valueOf(puntiParole);
                 //et.setHint(punti);
-            }
-           else{
-                et.setHint("parola non valida!");
-                counter.setText(Integer.toString(contatore));
-            }
         }
         else{
             et.setHint("parola non valida!");
