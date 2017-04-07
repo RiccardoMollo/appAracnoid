@@ -9,70 +9,82 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@drawable/background_main"
+    android:background="@drawable/background_nuovapartita"
     tools:context="com.example.utente.apparacnoid.NuovaPartita">
 
     <TextView
-        android:text="Palette"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="15dp"
-        android:textSize="32sp"
-        android:layout_gravity="center"
-        android:id="@+id/textView1" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="56dip"
+        android:layout_marginTop="15dip"
+        android:gravity="center"
+        android:text="PALETTE"
+        android:textColor="#D21F1B"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <TextView
         android:text="Nuova Partita"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="23dp"
-        android:textSize="32sp"
-        android:id="@+id/textView2" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dip"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:textColor="#D21F1B"
+        android:id="@+id/textView2"
+        android:layout_weight="0.10" />
+
+    <TextView
+        android:id="@+id/nome_tv"
+        android:text="Nome Giocatore:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#D21F1B"
+        android:textSize="25sp"
+        android:layout_weight="0.06" />
 
     <EditText
         android:id="@+id/nome_et"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:hint="Nome" />
+        android:layout_height="wrap_content"
+        android:hint=""
+        android:textSize="30sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
 
-        <TextView
-            android:text="Scegli il tuo colore"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:layout_marginTop="23dp"
-            android:textSize="32sp"
-            android:id="@+id/textView3"/>
 
-        <Button
+    <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="45dip"
+            android:layout_marginTop="23dip"
+            android:text="Scegli il tuo colore:"
+            android:textColor="#D21F1B"
+            android:textSize="35sp" />
+
+    <Button
             android:id="@+id/scegli_colore"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="151dip"
+            android:layout_height="141dip"
             android:background="@color/colorAccent"
-            android:onClick="change"
-            />
-
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:onClick="change" />
 
     <Button
         android:id="@+id/inizia"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="350dip"
+        android:layout_height="0dip"
+        android:layout_gravity="center"
         android:layout_weight="1"
-        android:text="Inizia"
+        android:background="#DAFDDA"
+        android:textSize="30sp"
         android:onClick="start"
-        />
+        android:text="Inizia" />
+
+
+
+
 
 
 </LinearLayout>
