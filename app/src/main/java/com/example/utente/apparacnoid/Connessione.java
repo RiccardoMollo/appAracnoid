@@ -2,6 +2,7 @@ package com.example.utente.apparacnoid;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -294,6 +295,12 @@ public class Connessione extends Activity {
     @OnClick(R.id.next)
     public void clickNext(View view) {
         Intent intent = new Intent(this, NuovaPartita.class);
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("host_url",host_url );
+        editor.apply();
+        editor.putInt("host_port",host_port);
+        editor.apply();
         //intent.putExtra(NuovaPartita.HOST_URL_KEY, host_url);
         //intent.putExtra(NuovaPartita.HOST_PORT_KEY, host_port);
         startActivity(intent);

@@ -21,7 +21,7 @@
             android:id="@+id/first_byte_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="192"
+            android:hint="172"
             android:inputType="number" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:id="@+id/second_byte_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="168"
+            android:hint="21"
             android:inputType="number" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:id="@+id/third_byte_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="1"
+            android:hint="32"
             android:inputType="number" />
 
         <TextView
@@ -57,7 +57,7 @@
             android:id="@+id/fourth_byte_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="32"
+            android:hint="85"
             android:inputType="number" />
 
         <TextView
