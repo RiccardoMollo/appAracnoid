@@ -60,6 +60,7 @@ public class NuovaPartita extends AppCompatActivity {
         };
 
         startHandlerThread();
+        setDisplayStart();
 
     }
 
@@ -147,6 +148,42 @@ public class NuovaPartita extends AppCompatActivity {
             handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, pixels_array, 0 ,0);
         } catch (JSONException e) {
             // There should be no Exception
+        }
+    }
+
+    void setDisplayStart() {
+        //DISPLAY
+        try {
+            JSONArray pixels_array = preparePixelsArray();
+            int r = 255;
+            int g = 255;
+            int b = 0;
+
+            for (int i = 0; i < pixels_array.length(); i++) {
+                ((JSONObject) pixels_array.get(i)).put("r", r);
+                ((JSONObject) pixels_array.get(i)).put("g", g);
+                ((JSONObject) pixels_array.get(i)).put("b", b);
+            }
+            handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, pixels_array, 0 ,0);
+        } catch (JSONException e) {
+            // There should be no Exception
+        }
+
+        //RAGNATELA
+        try {
+            JSONArray pixels_array = preparePixelsArray();
+            int r = 255;
+            int g = 255;
+            int b = 0;
+
+            for (int i = 0; i < pixels_array.length(); i++) {
+                ((JSONObject) pixels_array.get(i)).put("r", r);
+                ((JSONObject) pixels_array.get(i)).put("g", g);
+                ((JSONObject) pixels_array.get(i)).put("b", b);
+            }
+            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
