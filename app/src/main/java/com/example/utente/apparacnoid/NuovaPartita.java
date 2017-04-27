@@ -28,6 +28,11 @@ public class NuovaPartita extends AppCompatActivity {
     int [] coloriDisplay = new int[]{200,0,0,0,255,0,0,0,255};
     int i=0;
     int colore=0;
+    int r=0;
+    int g=0;
+    int b=0;
+
+    JSONArray pixels_array;
 
     Unbinder unbinder;
 
@@ -51,6 +56,8 @@ public class NuovaPartita extends AppCompatActivity {
         nome_et=(EditText) findViewById(R.id.nome_et);
         scegli_colore=(Button) findViewById(R.id.scegli_colore);
         avvia = (Button) findViewById(R.id.inizia);
+
+        pixels_array = preparePixelsArray();
 
         mMainHandler = new Handler() {
             @Override
@@ -84,7 +91,7 @@ public class NuovaPartita extends AppCompatActivity {
         colore = lista_colori[i];
         scegli_colore.setBackgroundColor(colore);
 
-        setDisplayPlayerColor(i);
+        setDisplayPlayerColor();
         i++;
         if(i==3){
             i=0;
@@ -99,6 +106,12 @@ public class NuovaPartita extends AppCompatActivity {
         editor.apply();
         editor.putInt("colore",colore);
         editor.apply();
+        editor.putInt("r",r);
+        editor.apply();
+        editor.putInt("g",g);
+        editor.apply();
+        editor.putInt("b",b);
+        editor.apply();
         editor.putInt("livello",1);
         editor.apply();
 
@@ -110,17 +123,15 @@ public class NuovaPartita extends AppCompatActivity {
         else {
 
             Intent intent = new Intent(this, Livello.class);
+            intent.putExtra("jsonArray",pixels_array.toString());
             startActivity(intent);
 
         }
     }
 
-    void setDisplayPlayerColor(int c) {
+    void setDisplayPlayerColor() {
         try {
             JSONArray pixels_array = preparePixelsArray();
-            int r;
-            int g;
-            int b;
 
             if(i==0){
                 r=coloriDisplay[0];
@@ -154,7 +165,7 @@ public class NuovaPartita extends AppCompatActivity {
     void setDisplayStart() {
         //DISPLAY
         try {
-            JSONArray pixels_array = preparePixelsArray();
+
             int r = 255;
             int g = 255;
             int b = 0;
@@ -171,7 +182,7 @@ public class NuovaPartita extends AppCompatActivity {
 
         //RAGNATELA
         try {
-            JSONArray pixels_array = preparePixelsArray();
+
             int r = 255;
             int g = 255;
             int b = 0;

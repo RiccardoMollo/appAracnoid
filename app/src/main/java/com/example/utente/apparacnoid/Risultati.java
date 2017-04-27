@@ -7,7 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 public class Risultati extends AppCompatActivity {
+
+    JSONArray pixels_array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +26,7 @@ public class Risultati extends AppCompatActivity {
         Bundle datiPassati = getIntent().getExtras();
 
         String punteggio =datiPassati.getString("messagePunti");
-        String paroleInserite =datiPassati.getString("messageParole");
+        int contatore =datiPassati.getInt("contatore");
         //String livello =datiPassati.getString("messageLivello");
 
         TextView tvLivello = (TextView)findViewById(R.id.titolo);
@@ -32,7 +37,16 @@ public class Risultati extends AppCompatActivity {
 
 
         TextView tvParole = (TextView) findViewById(R.id.numeroParole);
-        tvParole.setText("Parole inserite: "+ paroleInserite+"/5");
+        tvParole.setText("Parole inserite: "+ contatore+"/5");
+
+        Intent intent = getIntent();
+        String jsonArray = intent.getStringExtra("jsonArray");
+
+        try{
+            pixels_array = new JSONArray(jsonArray);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
 
 
 
