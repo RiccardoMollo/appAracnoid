@@ -147,11 +147,10 @@ public class Livello extends AppCompatActivity {
             Intent intent = new Intent (this, Risultati.class);
 
            // String messageLivello=String.valueOf(livello);
-            String messageParole = String.valueOf(contatore);
             String messagePunti  = String.valueOf(puntiLivello);
 
             intent.putExtra("messagePunti", messagePunti);
-            intent.putExtra("messageParole", messageParole);
+            intent.putExtra("messageParole", contatore);
             intent.putExtra("jsonArray",pixels_array.toString());
            // intent.putExtra("messageLivello",messageLivello);
 
@@ -186,6 +185,7 @@ public class Livello extends AppCompatActivity {
 
                 intent.putExtra("messagePunti", messagePunti);
                 intent.putExtra("messageParole", contatore);
+                intent.putExtra("jsonArray",pixels_array.toString());
 
                 startActivity(intent);
                 finish();
