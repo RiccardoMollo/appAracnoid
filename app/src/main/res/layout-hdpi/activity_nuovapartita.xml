@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@drawable/background_nuovapartita"
+    tools:context="com.example.utente.apparacnoid.NuovaPartita">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="PALETTE"
+        android:textColor="#D21F1B"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    <TextView
+        android:text="Nuova Partita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:textColor="#D21F1B"
+        android:id="@+id/textView2"
+        android:layout_weight="0.10" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp">
+    <TextView
+        android:id="@+id/nome_tv"
+        android:text="Nome Giocatore:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#D21F1B"
+        android:textSize="20sp"
+        android:layout_weight="0.06" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/nome_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=""
+        android:textSize="25sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="45dip"
+            android:layout_marginTop="23dip"
+            android:text="Scegli il tuo colore:"
+            android:textColor="#D21F1B"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="10dp">
+    <Button
+            android:id="@+id/scegli_colore"
+            android:layout_width="130dip"
+            android:layout_height="130dip"
+            android:background="@color/colorAccent"
+            android:onClick="change" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="50dp">
+    <Button
+        android:id="@+id/inizia"
+        android:layout_width="320dip"
+        android:layout_height="60dip"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="#DAFDDA"
+        android:textSize="25sp"
+        android:onClick="start"
+        android:text="Inizia" />
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
