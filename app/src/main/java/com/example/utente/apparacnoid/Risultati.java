@@ -149,6 +149,7 @@ public class Risultati extends AppCompatActivity {
     public void newLevel(View view){
 
         Intent intent = new Intent(this, Livello.class);
+        intent.putExtra("jsonArray",pixels_array.toString());
         startActivity(intent);
 
     }
