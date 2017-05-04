@@ -32,20 +32,9 @@ public class Connessione extends Activity {
     private String host_url = "192.168.1.32";
     private int host_port = 8080;
 
-    @BindView(R.id.set_display_pixels)
-    Button set_display_pixels;
 
-    @BindView(R.id.random_colors)
-    Button randomColors;
-
-    @BindView(R.id.move_backward_button)
-    Button moveBackwardButton;
-
-    @BindView(R.id.move_forward_button)
-    Button moveForwardButton;
-
-    @BindView(R.id.highlight_components_button)
-    Button changeColorButton;
+    @BindView(R.id.next)
+    Button nextActivity;
 
     @BindViews({R.id.first_byte_ip, R.id.second_byte_ip, R.id.third_byte_ip, R.id.fourth_byte_ip})
     List<EditText> ip_address_bytes;
@@ -66,11 +55,9 @@ public class Connessione extends Activity {
         setContentView(R.layout.activity_connessione);
         unbinder = ButterKnife.bind(this);
 
-        set_display_pixels.setEnabled(false);
-        randomColors.setEnabled(false);
-        moveBackwardButton.setEnabled(false);
-        moveForwardButton.setEnabled(false);
-        changeColorButton.setEnabled(false);
+        nextActivity.setEnabled(false);
+
+
 
         myIpTextWatcher = new TextWatcher() {
             @Override
@@ -82,11 +69,7 @@ public class Connessione extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (checkCorrectIp()) {
-                    moveBackwardButton.setEnabled(true);
-                    moveForwardButton.setEnabled(true);
-                    randomColors.setEnabled(true);
-                    set_display_pixels.setEnabled(true);
-                    changeColorButton.setEnabled(true);
+                    nextActivity.setEnabled(true); 
                     Message msg = mNetworkHandler.obtainMessage();
                     msg.what = NetworkThread.SET_SERVER_DATA;
                     msg.obj = host_url;
@@ -179,77 +162,15 @@ public class Connessione extends Activity {
 
 
 
-    @OnClick(R.id.random_colors)
-    void setRandomColors() {
 
-        try {
-            JSONArray pixels_array = preparePixelsArray();
 
-            for (int i = 0; i < pixels_array.length(); i++) {
-                ((JSONObject) pixels_array.get(i)).put("r", (int) (Math.random() * 255.0f));
-                ((JSONObject) pixels_array.get(i)).put("g", (int) (Math.random() * 255.0f));
-                ((JSONObject) pixels_array.get(i)).put("b", (int) (Math.random() * 255.0f));
-            }
-            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-    }
 
-    @OnClick(R.id.set_display_pixels)
-    void setDisplayPixels() {
-        try {
-            JSONArray pixels_array = preparePixelsArray();
 
-            for (int i = 0; i < pixels_array.length(); i++) {
-                ((JSONObject) pixels_array.get(i)).put("r", (int) (Math.random() * 255.0f));
-                ((JSONObject) pixels_array.get(i)).put("g", (int) (Math.random() * 255.0f));
-                ((JSONObject) pixels_array.get(i)).put("b", (int) (Math.random() * 255.0f));
-            }
-            handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, pixels_array, 0 ,0);
-        } catch (JSONException e) {
-            // There should be no Exception
-        }
-    }
 
-    @OnClick(R.id.highlight_components_button)
-    void highLightComponents() {
-        try {
-            pixels_array = preparePixelsArray();
-            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    @OnClick(R.id.move_forward_button)
-    void movePixelsForward() {
-        try {
-            JSONArray jsonArray = new JSONArray();
-            for (int i = 0; i < pixels_array.length(); i++) {
-                jsonArray.put(pixels_array.get((i + pixels_array.length() - 10) % pixels_array.length()));
-            }
-            pixels_array = jsonArray;
-            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    @OnClick(R.id.move_backward_button)
-    void movePixelsBackward() {
-        try {
-            JSONArray jsonArray = new JSONArray();
-            for (int i = 0; i < pixels_array.length(); i++) {
-                jsonArray.put(pixels_array.get((i + 10) % pixels_array.length()));
-            }
-            pixels_array = jsonArray;
-            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
     private void handleNetworkRequest(int what, Object payload, int arg1, int arg2) {
         Message msg = mNetworkHandler.obtainMessage();

@@ -51,7 +51,7 @@ public class NuovaPartita extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         SharedPreferences.Editor editor = settings.edit();
         host_port =  settings.getInt("host_port",0);
-        host_url = settings.getString("host_url", "null"); 
+        host_url = settings.getString("host_url", "null");
 
         nome_et=(EditText) findViewById(R.id.nome_et);
         scegli_colore=(Button) findViewById(R.id.scegli_colore);
