@@ -72,7 +72,7 @@ public class Risultati extends AppCompatActivity {
         TextView tvLivello = (TextView)findViewById(R.id.titolo);
         tvLivello.setText("Risultati livello "+livello);
         TextView tvPunti = (TextView) findViewById(R.id.puntiLivello);
-        tvPunti.setText("Hai totalizzatio "+punteggio+" punti" );
+        tvPunti.setText("Hai totalizzato "+punteggio+" punti" );
         TextView tvParole = (TextView) findViewById(R.id.numeroParole);
         tvParole.setText("Parole inserite: "+ contatore+"/5");
 
@@ -87,23 +87,62 @@ public class Risultati extends AppCompatActivity {
         if(lev==1){
             switch (cont){
                 case 1:
-                    coloraLed(522,542);
+                    coloraLed(522,541);
                     break;
                 case 2:
-                    coloraLed(522,558);
+                    coloraLed(522,552);
                     break;
                 case 3:
-                    coloraLed(522,577);
+                    coloraLed(522,586);
                     break;
                 case 4:
                     coloraLed(522,598);
                     break;
                 case 5:
-                    coloraLed(522,612);
+                    coloraLed(522,613);
                     break;
             }
         }
+        if(lev==2){
+            switch (cont){
+                case 1:
+                    coloraLed(613,648);
+                    break;
+                case 2:
+                    coloraLed(613,670);
+                    break;
+                case 3:
+                    coloraLed(613,737);
+                    break;
+                case 4:
+                    coloraLed(613,759);
+                    break;
+                case 5:
+                    coloraLed(613,791);
+                    break;
+            }
+        }
+
+    if(lev==3){
+        switch (cont){
+            case 1:
+                coloraLed(791,845);
+                break;
+            case 2:
+                coloraLed(791,880);
+                break;
+            case 3:
+                coloraLed(791,985);
+                break;
+            case 4:
+                coloraLed(791,1020);
+                break;
+            case 5:
+                coloraLed(791,1080);
+                break;
+        }
     }
+}
 
     void coloraLed(int inizio, int fine) {
 

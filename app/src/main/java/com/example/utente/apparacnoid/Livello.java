@@ -37,7 +37,7 @@ public class Livello extends AppCompatActivity {
 
 
     private static TextView txtCountDown;
-    private static final long startTime = 20 * 1000;
+    private static final long startTime = 10 * 1000;
     private static final long interval = 1000;
     CountDownTimer countDownTimer;
 
@@ -206,27 +206,67 @@ public class Livello extends AppCompatActivity {
 
 
     void coloraLinea(int i){
-
         if(livello==1){
             switch (i){
                 case 1:
-                    coloraLed(0,6,45,51);
+                    coloraLed(0,6,45,53);
                     break;
                 case 2:
                     coloraLed(52,58,179,185);
                     break;
                 case 3:
-                    coloraLed(186,192,311,317);
+                    coloraLed(186,192,311,318);
                     break;
                 case 4:
-                    coloraLed(318,324,417,423);
+                    coloraLed(318,324,417,424);
                     break;
                 case 5:
-                    coloraLed(424,430,515,521);
+                    coloraLed(424,430,515,522);
                     break;
             }
         }
+        if(livello==2){
+            switch (i){
+                case 1:
+                    coloraLed(6,14,37,45);
+                    break;
+                case 2:
+                    coloraLed(58,66,171,179);
+                    break;
+                case 3:
+                    coloraLed(192,200,303,311);
+                    break;
+                case 4:
+                    coloraLed(324,332,409,417);
+                    break;
+                case 5:
+                    coloraLed(430,438,507,515);
+                    break;
+            }
+        }
+
+
+        if(livello==3){
+        switch (i){
+            case 1:
+                coloraLed(14,26,26,37);
+                break;
+            case 2:
+                coloraLed(66,118,118,171);
+                break;
+            case 3:
+                coloraLed(200,250,250,303);
+                break;
+            case 4:
+                coloraLed(332,370,370,409);
+                break;
+            case 5:
+                coloraLed(438,472,472,507);
+                break;
+        }
     }
+
+}
 
     void coloraLed(int inizio1, int fine1,int inizio2, int fine2) {
 
