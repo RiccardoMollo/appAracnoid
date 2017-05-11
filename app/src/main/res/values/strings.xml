@@ -2,4 +2,18 @@
     <string name="app_name">AppAracnoid</string>
     <string name="goleft"><![CDATA[<]]></string>
     <string name="goright"><![CDATA[>]]></string>
+    <string name="title_activity_regole">Regole</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format1">All\'avvio del gioco, al centro della ragnatela e sul monitor del cellulare,
+        comparirà una lettera dell\'alfabeto (selezionata casualmente) ed un timer; l\'intera struttura a led verrà
+        illuminata di rosso. Il giocatore avrà come scopo l\'individuazione di cinque parole (anche brevi, ma di
+        senso compiuto) che inizino per quella lettera. </string>
+    <string name="section_format2">Per ogni parola valida inserita, una porzioni di ognuno dei cinque rami portanti
+        della ragnatela si colorerà di verde. Al termine di questo primo stadio, il sistema genera una nuova lettera
+        iniziale e si ripete il meccanismo per il secondo ed il terzo anello.</string>
+    <string name="section_format3">A gioco ultimato, l\'utente riceverà un punteggio calcolato sulla base del numero
+        di parole trovate e della loro lunghezza; sarà inoltre possibile avere un feedback immediato sull\'andamento
+        della partita in base alla colorazione della ragnatela (verde = ottimo, giallo = buono, arancione = mediocre,
+        rosso = scarso).</string>
+
 </resources>

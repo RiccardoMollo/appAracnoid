@@ -13,13 +13,17 @@
         <activity android:name=".Connessione">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NuovaPartita"/>
+        <activity android:name=".NuovaPartita" />
         <activity android:name=".Livello" />
         <activity android:name=".Risultati" />
-
+        <activity
+            android:name=".Regole"
+            android:label="@string/title_activity_regole"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

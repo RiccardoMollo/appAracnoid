@@ -69,7 +69,7 @@ public class Connessione extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (checkCorrectIp()) {
-                    nextActivity.setEnabled(true); 
+                    nextActivity.setEnabled(true);
                     Message msg = mNetworkHandler.obtainMessage();
                     msg.what = NetworkThread.SET_SERVER_DATA;
                     msg.obj = host_url;
@@ -161,17 +161,6 @@ public class Connessione extends Activity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     private void handleNetworkRequest(int what, Object payload, int arg1, int arg2) {
         Message msg = mNetworkHandler.obtainMessage();
         msg.what = what;
@@ -224,6 +213,13 @@ public class Connessione extends Activity {
         editor.apply();
         //intent.putExtra(NuovaPartita.HOST_URL_KEY, host_url);
         //intent.putExtra(NuovaPartita.HOST_PORT_KEY, host_port);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.regole)
+    public void clickRegole(View view) {
+        Intent intent = new Intent(this, Regole.class);
+
         startActivity(intent);
     }
 }
