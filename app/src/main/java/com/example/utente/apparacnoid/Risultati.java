@@ -31,6 +31,7 @@ public class Risultati extends AppCompatActivity {
     int r;
     int g;
     int b;
+    int livello;
 
 
     @Override
@@ -52,7 +53,7 @@ public class Risultati extends AppCompatActivity {
 
 
         SharedPreferences.Editor editor = settings.edit();
-        int livello =  settings.getInt("livello",0);
+        livello =  settings.getInt("livello",0);
         r=settings.getInt("r",0);
         g=settings.getInt("g",0);
         b=settings.getInt("b",0);
@@ -188,8 +189,16 @@ public class Risultati extends AppCompatActivity {
     public void newLevel(View view){
 
         Intent intent = new Intent(this, Livello.class);
+        Intent finale = new Intent(this, RisultatiFinali.class);
         intent.putExtra("jsonArray",pixels_array.toString());
-        startActivity(intent);
+        if ( livello ==3){
+            startActivity(finale);
+            finish();
+        }
+        else {
+            startActivity(intent);
+        }
+        finish();
 
     }
 

@@ -23,7 +23,8 @@
         <activity
             android:name=".Regole"
             android:label="@string/title_activity_regole"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".RisultatiFinali"></activity>
     </application>
 
 </manifest>

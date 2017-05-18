@@ -125,6 +125,7 @@ public class NuovaPartita extends AppCompatActivity {
             Intent intent = new Intent(this, Livello.class);
             intent.putExtra("jsonArray",pixels_array.toString());
             startActivity(intent);
+            finish();
 
         }
     }

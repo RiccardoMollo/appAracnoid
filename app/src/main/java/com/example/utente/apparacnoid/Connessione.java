@@ -214,6 +214,7 @@ public class Connessione extends Activity {
         //intent.putExtra(NuovaPartita.HOST_URL_KEY, host_url);
         //intent.putExtra(NuovaPartita.HOST_PORT_KEY, host_port);
         startActivity(intent);
+        finish();
     }
 
     @OnClick(R.id.regole)

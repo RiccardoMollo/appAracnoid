@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_risultati">
+
+
+    <TextView
+        android:text="RISULTATI FINALI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:id="@+id/titolo"
+        android:textSize="32sp"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:id="@+id/puntiLivello"
+        android:textSize="32sp"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:id="@+id/numeroParole"
+        android:textSize="32sp"
+        />
+
+    <Button
+        android:id="@+id/livelloSuccessivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Esci"
+        android:onClick="exitGame"
+
+        />
+
+
+</LinearLayout>
