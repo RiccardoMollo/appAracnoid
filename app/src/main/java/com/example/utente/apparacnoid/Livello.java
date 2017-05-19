@@ -209,7 +209,7 @@ public class Livello extends AppCompatActivity {
         if(livello==1){
             switch (i){
                 case 1:
-                    coloraLed(0,6,45,53);
+                    coloraLed(0,6,45,52);
                     break;
                 case 2:
                     coloraLed(52,58,179,185);

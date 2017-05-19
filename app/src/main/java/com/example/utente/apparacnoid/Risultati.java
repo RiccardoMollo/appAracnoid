@@ -77,14 +77,18 @@ public class Risultati extends AppCompatActivity {
         TextView tvParole = (TextView) findViewById(R.id.numeroParole);
         tvParole.setText("Parole inserite: "+ contatore+"/5");
 
+
         editor.putInt("livello",livello+1);
         editor.apply();
 
         startHandlerThread();
         coloraAnello(contatore,livello);
+
+
     }
 
     void coloraAnello(int cont, int lev){
+
         if(lev==1){
             switch (cont){
                 case 1:
@@ -123,10 +127,10 @@ public class Risultati extends AppCompatActivity {
                     break;
             }
         }
+        if(lev==3){
+            switch(cont){
+                case 1:
 
-    if(lev==3){
-        switch (cont){
-            case 1:
                 coloraLed(791,845);
                 break;
             case 2:
@@ -139,10 +143,12 @@ public class Risultati extends AppCompatActivity {
                 coloraLed(791,1020);
                 break;
             case 5:
-                coloraLed(791,1080);
+                coloraLed(791,1072);
                 break;
+            }
         }
-    }
+
+
 }
 
     void coloraLed(int inizio, int fine) {
