@@ -2,35 +2,39 @@ package com.example.utente.apparacnoid;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Random;
+
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class Validazione extends AppCompatActivity {
 
-    EditText nome_et;
-    Button scegli_colore;
-    Button avvia;
-    int[] lista_colori= new int[]{Color.argb(255,200,0,0),Color.argb(255,0,255,0),Color.argb(255,0,0,255)};
-    int [] coloriDisplay = new int[]{200,0,0,0,255,0,0,0,255};
-    int i=0;
-    int colore=0;
-    int r=0;
-    int g=0;
-    int b=0;
+    Random rand= new Random();
+
+    int coloreOut = rand.nextInt(3);
+    int coloreMid = rand.nextInt(3);
+    int coloreIn  = rand.nextInt(3);
+    int rO;
+    int gO;
+    int bO;
+    int rM;
+    int gM;
+    int bM;
+    int rI;
+    int gI;
+    int bI;
 
     JSONArray pixels_array;
 
@@ -44,7 +48,7 @@ public class Validazione extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nuovapartita);
+        setContentView(R.layout.activity_validazione);
 
         unbinder = ButterKnife.bind(this);
 
@@ -62,8 +66,70 @@ public class Validazione extends AppCompatActivity {
             }
         };
 
+        if (coloreOut==0){
+            rO=255;
+            gO=0;
+            bO=0;
+
+
+        }
+
+        if (coloreOut==1){
+            rO=0;
+            gO=0;
+            bO=255;
+
+        }
+
+        if (coloreOut==2){
+            rO=0;
+            gO=255;
+            bO=0;
+
+        }
+        if (coloreMid==0){
+            rM=255;
+            gM=0;
+            bM=0;
+
+        }
+
+        if (coloreMid==1){
+            rM=0;
+            gM=0;
+            bM=255;
+
+        }
+
+        if (coloreMid==2){
+            rM=0;
+            gM=255;
+            bM=0;
+
+        }
+        if (coloreIn==0){
+            rI=255;
+            gI=0;
+            bI=0;
+
+        }
+        if (coloreIn==1){
+            rI=0;
+            gI=0;
+            bI=255;
+
+        }
+        if (coloreIn==2){
+            rI=0;
+            gI=255;
+            bI=0;
+
+        }
+
+
+
         startHandlerThread();
-        setDisplayStart();
+        setAnelli();
 
     }
 
@@ -84,35 +150,38 @@ public class Validazione extends AppCompatActivity {
 
 
 
-    void setDisplayStart() {
-        //DISPLAY
-        try {
+    void setAnelli() {
 
-            int r = 255;
-            int g = 255;
-            int b = 0;
-
-            for (int i = 0; i < pixels_array.length(); i++) {
-                ((JSONObject) pixels_array.get(i)).put("r", r);
-                ((JSONObject) pixels_array.get(i)).put("g", g);
-                ((JSONObject) pixels_array.get(i)).put("b", b);
-            }
-            handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, pixels_array, 0 ,0);
-        } catch (JSONException e) {
-            // There should be no Exception
-        }
 
         //RAGNATELA
         try {
 
-            int r = 255;
-            int g = 255;
-            int b = 0;
+            for (int i = 522; i < 613; i++) {
+                ((JSONObject) pixels_array.get(i)).put("r", rI);
+                ((JSONObject) pixels_array.get(i)).put("g", gI);
+                ((JSONObject) pixels_array.get(i)).put("b", bI);
+            }
+            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
 
-            for (int i = 0; i < pixels_array.length(); i++) {
-                ((JSONObject) pixels_array.get(i)).put("r", r);
-                ((JSONObject) pixels_array.get(i)).put("g", g);
-                ((JSONObject) pixels_array.get(i)).put("b", b);
+            for (int i = 613; i < 791; i++) {
+                ((JSONObject) pixels_array.get(i)).put("r", rM);
+                ((JSONObject) pixels_array.get(i)).put("g", gM);
+                ((JSONObject) pixels_array.get(i)).put("b", bM);
+            }
+            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+
+            for (int i = 791; i < 1072; i++) {
+                ((JSONObject) pixels_array.get(i)).put("r", rO);
+                ((JSONObject) pixels_array.get(i)).put("g", gO);
+                ((JSONObject) pixels_array.get(i)).put("b", bO);
             }
             handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
         } catch (Exception e) {
@@ -128,7 +197,7 @@ public class Validazione extends AppCompatActivity {
                 tmp = new JSONObject();
                 tmp.put("a", 0);
                 if (i < 522) {
-                    tmp.put("g", 255);
+                    tmp.put("g", 0);
                     tmp.put("b", 0);
                     tmp.put("r", 0);
                 } else if (i < 613) {
@@ -159,6 +228,19 @@ public class Validazione extends AppCompatActivity {
         msg.arg1 = arg1;
         msg.arg2 = arg2;
         msg.sendToTarget();
+    }
+
+    @OnClick(R.id.next)
+    public void clickNext(View view) {
+        Intent intent = new Intent(this, NuovaPartita.class);
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("host_url",host_url );
+        editor.apply();
+        editor.putInt("host_port",host_port);
+        editor.apply();
+        startActivity(intent);
+        finish();
     }
 
 }
