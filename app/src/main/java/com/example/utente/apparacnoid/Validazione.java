@@ -23,6 +23,8 @@ public class Validazione extends AppCompatActivity {
 
     Random rand= new Random();
 
+    int verifica=0;
+
     int coloreOut = rand.nextInt(3);
     int coloreMid = rand.nextInt(3);
     int coloreIn  = rand.nextInt(3);
@@ -232,15 +234,80 @@ public class Validazione extends AppCompatActivity {
 
     @OnClick(R.id.next)
     public void clickNext(View view) {
-        Intent intent = new Intent(this, NuovaPartita.class);
-        SharedPreferences settings = getSharedPreferences("Settings", 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("host_url",host_url );
-        editor.apply();
-        editor.putInt("host_port",host_port);
-        editor.apply();
-        startActivity(intent);
-        finish();
+        if(verifica==3) {
+            Intent intent = new Intent(this, NuovaPartita.class);
+            SharedPreferences settings = getSharedPreferences("Settings", 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("host_url", host_url);
+            editor.apply();
+            editor.putInt("host_port", host_port);
+            editor.apply();
+            startActivity(intent);
+            finish();
+        }
+        else{
+            Intent intent = new Intent(this, Validazione.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+    @OnClick(R.id.out1)
+    public void clickOut1(View view) {
+        if (coloreOut == 0) {
+            verifica++;
+        }
+
+    }
+    @OnClick(R.id.out2)
+    public void clickOut2(View view) {
+        if (coloreOut == 1) {
+            verifica++;
+        }
+    }
+    @OnClick(R.id.out3)
+    public void clickOut3(View view) {
+        if (coloreOut==2){
+            verifica++;
+        }
+
+    }
+    @OnClick(R.id.mid1)
+    public void clickMid1(View view) {
+        if (coloreMid == 0) {
+            verifica++;
+        }
+    }
+    @OnClick(R.id.mid2)
+    public void clickMid2(View view) {
+        if (coloreMid == 1) {
+            verifica++;
+        }
+    }
+    @OnClick(R.id.mid3)
+    public void clickMid3(View view) {
+        if (coloreMid==2){
+            verifica++;
+        }
+
+    }
+    @OnClick(R.id.in1)
+    public void clickIn1(View view) {
+        if (coloreIn == 0) {
+            verifica++;
+        }
+    }
+    @OnClick(R.id.in2)
+    public void clickIn2(View view) {
+        if (coloreIn == 1) {
+            verifica++;
+        }
+    }
+    @OnClick(R.id.in3)
+    public void clickIn3(View view) {
+        if (coloreIn==2){
+            verifica++;
+        }
+
     }
 
 }

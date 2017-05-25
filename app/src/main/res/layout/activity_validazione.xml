@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_risultati">
+    android:background="@drawable/background_risultati"
+    android:weightSum="1">
 
 
     <TextView
@@ -13,10 +14,125 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:paddingLeft="50dp"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
         android:id="@+id/titolo"
         android:textSize="32sp"
         />
+
+    <TextView
+        android:text="OUT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:id="@+id/out"
+        android:textSize="32sp"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/out1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="?attr/colorPrimary" />
+
+        <ImageButton
+            android:id="@+id/out2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="?attr/actionModeSplitBackground" />
+
+        <ImageButton
+            android:id="@+id/out3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="@android:color/holo_green_light" />
+
+
+    </LinearLayout>
+    <TextView
+        android:text="MID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:id="@+id/mid"
+        android:textSize="32sp"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/mid1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="?attr/colorPrimary" />
+
+        <ImageButton
+            android:id="@+id/mid2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="?attr/actionModeSplitBackground" />
+
+        <ImageButton
+            android:id="@+id/mid3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="@android:color/holo_green_light" />
+
+    </LinearLayout>
+    <TextView
+        android:text="IN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:id="@+id/in"
+        android:textSize="32sp"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/in1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="?attr/colorPrimary" />
+
+        <ImageButton
+            android:id="@+id/in2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="?attr/actionModeSplitBackground" />
+
+        <ImageButton
+            android:id="@+id/in3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.13"
+            app:srcCompat="@android:color/holo_green_light" />
+
+
+    </LinearLayout>
+
+
     <Button
         android:id="@+id/next"
         android:layout_width="wrap_content"
