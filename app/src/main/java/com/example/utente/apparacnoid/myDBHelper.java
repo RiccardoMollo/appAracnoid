@@ -4,10 +4,6 @@ import android.content.Context;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
-/**
- * Created by Utente on 24/05/2017.
- */
-
 public class myDBHelper extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "dictionary.db";

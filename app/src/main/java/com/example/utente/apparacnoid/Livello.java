@@ -35,9 +35,11 @@ public class Livello extends AppCompatActivity {
     int livello;
     //int puntiTempo;
 
+    private myDBManager mydbm;
+
 
     private static TextView txtCountDown;
-    private static final long startTime = 10 * 1000;
+    private static final long startTime = 30 * 1000;
     private static final long interval = 1000;
     CountDownTimer countDownTimer;
 
@@ -55,6 +57,8 @@ public class Livello extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_livello);
+
+        mydbm = new myDBManager(Livello.this);
 
         Intent intent = getIntent();
         String jsonArray = intent.getStringExtra("jsonArray");
@@ -120,10 +124,10 @@ public class Livello extends AppCompatActivity {
 
         //String punti = String.valueOf(puntiLettera);
         // et.setHint(punti);
-        et.setText(null);
+        et.setText("");
 
         TextView counter = (TextView) findViewById(R.id.counter);
-        if (parolaInserita.startsWith(confronto)){
+        if (parolaInserita.startsWith(confronto) && mydbm.getWordMatches(parolaInserita)){
                 puntiLettera+= (parolaInserita.length()*10);
                 contatore++;
                 coloraLinea(contatore);
