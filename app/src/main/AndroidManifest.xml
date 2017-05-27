@@ -25,7 +25,8 @@
             android:label="@string/title_activity_regole"
             android:theme="@style/AppTheme" />
         <activity android:name=".RisultatiFinali" />
-        <activity android:name=".Validazione"></activity>
+        <activity android:name=".Validazione" />
+        <activity android:name=".MenuPrincipale"></activity>
     </application>
 
 </manifest>

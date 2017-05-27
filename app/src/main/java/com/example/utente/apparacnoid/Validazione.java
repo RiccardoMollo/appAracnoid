@@ -235,7 +235,7 @@ public class Validazione extends AppCompatActivity {
     @OnClick(R.id.next)
     public void clickNext(View view) {
         if(verifica==3) {
-            Intent intent = new Intent(this, NuovaPartita.class);
+            Intent intent = new Intent(this, MenuPrincipale.class);
             SharedPreferences settings = getSharedPreferences("Settings", 0);
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("host_url", host_url);
