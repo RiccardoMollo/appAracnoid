@@ -202,6 +202,7 @@ public class Connessione extends Activity {
         return pixels_array;
     }
 
+
     @OnClick(R.id.next)
     public void clickNext(View view) {
         Intent intent = new Intent(this, Validazione.class);
@@ -211,8 +212,6 @@ public class Connessione extends Activity {
         editor.apply();
         editor.putInt("host_port",host_port);
         editor.apply();
-        //intent.putExtra(NuovaPartita.HOST_URL_KEY, host_url);
-        //intent.putExtra(NuovaPartita.HOST_PORT_KEY, host_port);
         startActivity(intent);
         finish();
     }

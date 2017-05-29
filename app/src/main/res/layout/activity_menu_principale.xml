@@ -29,6 +29,7 @@
         android:paddingEnd="50dp"
         android:id="@+id/nuovapartita"
         android:textSize="32sp"
+        android:onClick="clickNuovaPartita"
         />
 
     <Button
@@ -40,17 +41,9 @@
         android:paddingEnd="50dp"
         android:id="@+id/regole"
         android:textSize="32sp"
+        android:onClick="clickRegole"
         />
 
-    <Button
-        android:text="Highest Score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
-        android:id="@+id/score"
-        android:textSize="32sp"
-        />
+
 
 </LinearLayout>

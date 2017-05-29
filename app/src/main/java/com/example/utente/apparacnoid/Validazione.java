@@ -236,12 +236,12 @@ public class Validazione extends AppCompatActivity {
     public void clickNext(View view) {
         if(verifica==3) {
             Intent intent = new Intent(this, MenuPrincipale.class);
-            SharedPreferences settings = getSharedPreferences("Settings", 0);
+            /*SharedPreferences settings = getSharedPreferences("Settings", 0);
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("host_url", host_url);
             editor.apply();
             editor.putInt("host_port", host_port);
-            editor.apply();
+            editor.apply();*/
             startActivity(intent);
             finish();
         }
