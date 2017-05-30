@@ -2,13 +2,9 @@ package com.example.utente.apparacnoid;
 
 import android.support.annotation.NonNull;
 
-/**
- * Created by Utente on 30/05/2017.
- */
-
 public class Giocatore implements Comparable <Giocatore> {
-    String nome;
-    int punteggio;
+    private String nome;
+    private int punteggio;
 
     public Giocatore(String n, int p){
         this.nome=n;
@@ -24,7 +20,7 @@ public class Giocatore implements Comparable <Giocatore> {
     }
 
     @Override
-    public int compareTo(Giocatore giocatoreComp) {
+    public int compareTo(@NonNull Giocatore giocatoreComp) {
         int comparePunteggio = ((Giocatore) giocatoreComp).getPunteggio();
 
         //ascending order

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -22,11 +23,14 @@ public class RisultatiFinali extends AppCompatActivity {
     String nomeGiocatore;
     Giocatore giocatore;
     ArrayList<Giocatore> listaGiocatori;
+    ListView elenco_lv;
+    myArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_risultati_finali);
+        elenco_lv = (ListView) findViewById(R.id.elenco);
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         risultati_tv = (TextView) findViewById(R.id.risultatiFinali);
         risultato = settings.getInt("punteggioFinale",0);
@@ -37,9 +41,9 @@ public class RisultatiFinali extends AppCompatActivity {
         listaGiocatori = getListaGiocatori(settings);
         listaGiocatori.add(giocatore);
         Collections.sort(listaGiocatori);
-        provaLista(listaGiocatori);
         saveListaGiocatori(settings,listaGiocatori);
-
+        adapter = new myArrayAdapter(this, R.layout.row, listaGiocatori);
+        elenco_lv.setAdapter(adapter);
     }
 
     private void creaLaPrimaListagiocatori(SharedPreferences settings) {
