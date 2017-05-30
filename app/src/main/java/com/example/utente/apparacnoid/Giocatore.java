@@ -28,6 +28,6 @@ public class Giocatore implements Comparable <Giocatore> {
         int comparePunteggio = ((Giocatore) giocatoreComp).getPunteggio();
 
         //ascending order
-        return this.punteggio - comparePunteggio;
+        return  comparePunteggio - this.punteggio;
     }
 }
