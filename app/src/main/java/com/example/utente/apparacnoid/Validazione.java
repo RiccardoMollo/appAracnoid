@@ -7,6 +7,8 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -15,6 +17,7 @@ import org.json.JSONObject;
 
 import java.util.Random;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -37,6 +40,25 @@ public class Validazione extends AppCompatActivity {
     int rI;
     int gI;
     int bI;
+
+    @BindView(R.id.out1)
+    ImageButton out1;
+    @BindView(R.id.out2)
+    ImageButton out2;
+    @BindView(R.id.out3)
+    ImageButton out3;
+    @BindView(R.id.mid1)
+    ImageButton mid1;
+    @BindView(R.id.mid2)
+    ImageButton mid2;
+    @BindView(R.id.mid3)
+    ImageButton mid3;
+    @BindView(R.id.in1)
+    ImageButton in1;
+    @BindView(R.id.in2)
+    ImageButton in2;
+    @BindView(R.id.in3)
+    ImageButton in3;
 
     JSONArray pixels_array;
 
@@ -232,81 +254,101 @@ public class Validazione extends AppCompatActivity {
         msg.sendToTarget();
     }
 
-    @OnClick(R.id.next)
-    public void clickNext(View view) {
+
+    public void GoNext() {
         if(verifica==3) {
             Intent intent = new Intent(this, MenuPrincipale.class);
-            /*SharedPreferences settings = getSharedPreferences("Settings", 0);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("host_url", host_url);
-            editor.apply();
-            editor.putInt("host_port", host_port);
-            editor.apply();*/
             startActivity(intent);
             finish();
         }
-        else{
-            Intent intent = new Intent(this, Validazione.class);
-            startActivity(intent);
-            finish();
-        }
+
     }
     @OnClick(R.id.out1)
     public void clickOut1(View view) {
         if (coloreOut == 0) {
             verifica++;
-        }
+            out1.setEnabled(false);
+            out1.setAlpha(45);
+            }
+        GoNext();
+
 
     }
     @OnClick(R.id.out2)
     public void clickOut2(View view) {
         if (coloreOut == 1) {
             verifica++;
+            out2.setEnabled(false);
+            out2.setAlpha(45);
         }
+        GoNext();
+
     }
     @OnClick(R.id.out3)
     public void clickOut3(View view) {
         if (coloreOut==2){
             verifica++;
+            out3.setEnabled(false);
+            out3.setAlpha(45);
         }
+        GoNext();
+
 
     }
     @OnClick(R.id.mid1)
     public void clickMid1(View view) {
         if (coloreMid == 0) {
             verifica++;
+            mid1.setEnabled(false);
+            mid1.setAlpha(45);
         }
+        GoNext();
     }
     @OnClick(R.id.mid2)
     public void clickMid2(View view) {
         if (coloreMid == 1) {
             verifica++;
+            mid2.setEnabled(false);
+            mid2.setAlpha(45);
         }
+        GoNext();
     }
     @OnClick(R.id.mid3)
     public void clickMid3(View view) {
         if (coloreMid==2){
             verifica++;
+            mid3.setEnabled(false);
+            mid3.setAlpha(45);
         }
+        GoNext();
 
     }
     @OnClick(R.id.in1)
     public void clickIn1(View view) {
         if (coloreIn == 0) {
             verifica++;
+            in1.setEnabled(false);
+            in1.setAlpha(45);
         }
+        GoNext();
     }
     @OnClick(R.id.in2)
     public void clickIn2(View view) {
         if (coloreIn == 1) {
             verifica++;
+            in2.setEnabled(false);
+            in2.setAlpha(45);
         }
+        GoNext();
     }
     @OnClick(R.id.in3)
     public void clickIn3(View view) {
         if (coloreIn==2){
             verifica++;
+            in3.setEnabled(false);
+            in3.setAlpha(45);
         }
+        GoNext();
 
     }
 
