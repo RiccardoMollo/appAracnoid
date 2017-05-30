@@ -9,32 +9,15 @@
 
 
     <TextView
-        android:text="RISULTATI FINALI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingLeft="50dp"
-        android:id="@+id/titolo"
+        android:id="@+id/risultatiFinali"
         android:textSize="32sp"
         />
-    <TextView
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="50dp"
-        android:id="@+id/puntiLivello"
-        android:textSize="32sp"
-        />
-    <TextView
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="50dp"
-        android:id="@+id/numeroParole"
-        android:textSize="32sp"
-        />
 
     <Button
         android:id="@+id/livelloSuccessivo"

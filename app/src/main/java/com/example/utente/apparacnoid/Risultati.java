@@ -32,6 +32,7 @@ public class Risultati extends AppCompatActivity {
     int g;
     int b;
     int livello;
+    int punteggioFinale;
 
 
     @Override
@@ -54,13 +55,15 @@ public class Risultati extends AppCompatActivity {
 
         SharedPreferences.Editor editor = settings.edit();
         livello =  settings.getInt("livello",0);
+        punteggioFinale = settings.getInt("punteggioFinale",0);
+
         r=settings.getInt("r",0);
         g=settings.getInt("g",0);
         b=settings.getInt("b",0);
 
         Intent datiPassati = getIntent();
 
-        String punteggio =datiPassati.getStringExtra("messagePunti");
+        int punteggioLivello = datiPassati.getIntExtra("messagePunti",0);
         int contatore =datiPassati.getIntExtra("messageParole",0);
         String jsonArray = datiPassati.getStringExtra("jsonArray");
         try{
@@ -73,12 +76,14 @@ public class Risultati extends AppCompatActivity {
         TextView tvLivello = (TextView)findViewById(R.id.titolo);
         tvLivello.setText("Risultati livello "+livello);
         TextView tvPunti = (TextView) findViewById(R.id.puntiLivello);
-        tvPunti.setText("Hai totalizzato "+punteggio+" punti" );
+        tvPunti.setText("Hai totalizzato "+punteggioLivello+" punti" );
         TextView tvParole = (TextView) findViewById(R.id.numeroParole);
         tvParole.setText("Parole inserite: "+ contatore+"/5");
 
 
         editor.putInt("livello",livello+1);
+        editor.apply();
+        editor.putInt("punteggioFinale",punteggioFinale+punteggioLivello);
         editor.apply();
 
         startHandlerThread();
@@ -194,14 +199,14 @@ public class Risultati extends AppCompatActivity {
 
     public void newLevel(View view){
 
-        Intent intent = new Intent(this, Livello.class);
-        Intent finale = new Intent(this, RisultatiFinali.class);
-        intent.putExtra("jsonArray",pixels_array.toString());
         if ( livello ==3){
+            Intent finale = new Intent(this, RisultatiFinali.class);
             startActivity(finale);
             finish();
         }
         else {
+            Intent intent = new Intent(this, Livello.class);
+            intent.putExtra("jsonArray",pixels_array.toString());
             startActivity(intent);
         }
         finish();

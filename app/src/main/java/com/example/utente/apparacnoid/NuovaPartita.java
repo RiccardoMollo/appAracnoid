@@ -114,6 +114,8 @@ public class NuovaPartita extends AppCompatActivity {
         editor.apply();
         editor.putInt("livello",1);
         editor.apply();
+        editor.putInt("punteggioFinale",0);
+        editor.apply();
 
         if (nome_et.getText().toString().matches("")) {
             //Intent intent = new Intent(this, Livello.class);

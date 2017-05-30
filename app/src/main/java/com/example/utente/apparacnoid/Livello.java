@@ -100,7 +100,7 @@ public class Livello extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.letter);
 
         String[] chars = {"A","B","C","D","E","F","G","I","L","M","N","O","P","R","S","T"};
-        tv.setText(chars[(int) (Math.random() * 17)]);
+        tv.setText(chars[(int) (Math.random() * 16)]);
 
 // INIZIALIZZAZIONE VARIABILE TIMER
 
@@ -151,9 +151,7 @@ public class Livello extends AppCompatActivity {
             Intent intent = new Intent (this, Risultati.class);
 
            // String messageLivello=String.valueOf(livello);
-            String messagePunti  = String.valueOf(puntiLivello);
-
-            intent.putExtra("messagePunti", messagePunti);
+            intent.putExtra("messagePunti", puntiLivello);
             intent.putExtra("messageParole", contatore);
             intent.putExtra("jsonArray",pixels_array.toString());
            // intent.putExtra("messageLivello",messageLivello);
@@ -181,13 +179,9 @@ public class Livello extends AppCompatActivity {
         public void onFinish() {
             if(txtCountDown!=null){
                 int puntiLivello = puntiLettera+puntiParole;
-
                 Intent intent = new Intent (c, Risultati.class);
-
-
-                String messagePunti  = String.valueOf(puntiLivello);
-
-                intent.putExtra("messagePunti", messagePunti);
+                //String messagePunti  = String.valueOf(puntiLivello);
+                intent.putExtra("messagePunti", puntiLivello);
                 intent.putExtra("messageParole", contatore);
                 intent.putExtra("jsonArray",pixels_array.toString());
 
@@ -199,15 +193,12 @@ public class Livello extends AppCompatActivity {
         @Override
         public void onTick(long millisUntilFinished) {
             if(txtCountDown!=null){
-
                     txtCountDown.setText("" + millisUntilFinished / 1000);
-
             }
         }
     }
 
 // FINE TIMER
-
 
     void coloraLinea(int i){
         if(livello==1){
