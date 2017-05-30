@@ -8,34 +8,32 @@
     android:background="@drawable/background_livello">
 
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:background="#0090FF"
-        android:padding="10dp"
-        android:keepScreenOn="true" >
-
-        <TextView
-            android:id="@+id/txtCountDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:textColor="#fff" />
-
-    </RelativeLayout>
+        android:orientation="horizontal">
 
     <TextView
         android:text="Lettera random"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
+        android:paddingTop="80dp"
         android:paddingLeft="50dp"
         android:id="@+id/letter"
         android:textSize="32sp"
         />
+    <TextView
+        android:id="@+id/txtCountDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="80dp"
+        android:paddingLeft="230dp"
+        android:textSize="32sp"
+        android:textColor="#fff" />
+    </LinearLayout>
 
 
     <LinearLayout
@@ -58,7 +56,7 @@
         <EditText
             android:id="@+id/parolaInserita"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="textCapSentences"
             android:hint="inserisci la parola"
 
