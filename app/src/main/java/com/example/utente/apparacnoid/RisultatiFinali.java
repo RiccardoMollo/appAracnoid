@@ -31,6 +31,7 @@ public class RisultatiFinali extends AppCompatActivity {
         risultati_tv = (TextView) findViewById(R.id.risultatiFinali);
         risultato = settings.getInt("punteggioFinale",0);
         nomeGiocatore = settings.getString("nome","");
+        creaLaPrimaListagiocatori(settings);
         risultati_tv.setText("Punteggio finale di " + nomeGiocatore + " : " + risultato);
         giocatore=new Giocatore(nomeGiocatore,risultato);
         listaGiocatori = getListaGiocatori(settings);
@@ -39,9 +40,25 @@ public class RisultatiFinali extends AppCompatActivity {
         provaLista(listaGiocatori);
         saveListaGiocatori(settings,listaGiocatori);
 
+    }
 
-
-
+    private void creaLaPrimaListagiocatori(SharedPreferences settings) {
+        ArrayList<Giocatore>lista=new ArrayList<>();
+        lista.add(new Giocatore("ric",1220));
+        lista.add(new Giocatore("luc",960));
+        lista.add(new Giocatore("mak",910));
+        lista.add(new Giocatore("bob",500));
+        lista.add(new Giocatore("tom",360));
+        lista.add(new Giocatore("joe",540));
+        lista.add(new Giocatore("sam",740));
+        lista.add(new Giocatore("puk",980));
+        lista.add(new Giocatore("tic",780));
+        lista.add(new Giocatore("toc",1010));
+        SharedPreferences.Editor prefsEditor = settings.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(lista);
+        prefsEditor.putString("listaGiocatori", json);
+        prefsEditor.apply();
     }
 
     private void saveListaGiocatori(SharedPreferences settings,ArrayList listagiocatori) {
@@ -56,7 +73,7 @@ public class RisultatiFinali extends AppCompatActivity {
     private void provaLista(ArrayList<Giocatore> listaGiocatori) {
         if(listaGiocatori.size()!=0){
             String sequenzaNomi="";
-            for(int i=0; i<listaGiocatori.size();i++){
+            for(int i=0; i<10;i++){
                 sequenzaNomi = sequenzaNomi + listaGiocatori.get(i).getNome();
             }
             risultati_tv.setText(sequenzaNomi);
