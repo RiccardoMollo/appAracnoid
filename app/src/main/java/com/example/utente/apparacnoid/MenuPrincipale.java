@@ -1,17 +1,14 @@
 package com.example.utente.apparacnoid;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import butterknife.OnClick;
 
 public class MenuPrincipale extends AppCompatActivity {
 
-    private String host_url ;
-    private int host_port;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

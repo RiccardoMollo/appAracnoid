@@ -20,8 +20,16 @@
 
 
     <Button
-        android:id="@+id/livelloSuccessivo"
-        android:layout_width="match_parent"
+        android:id="@+id/replay"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Gioca di nuovo"
+        android:onClick="replay"
+
+        />
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Esci"
         android:onClick="exitGame"
