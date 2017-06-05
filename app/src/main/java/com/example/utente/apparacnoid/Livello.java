@@ -43,6 +43,8 @@ public class Livello extends AppCompatActivity implements Callback {
 
     private Button button_send;
     EditText et;
+    TextView tv;
+    String[] chars = {"A","B","C","D","E","F","G","I","L","M","N","O","P","R","S","T"};
 
     private static TextView txtCountDown;
     private static final long startTime = 30 * 1000;
@@ -113,17 +115,14 @@ public class Livello extends AppCompatActivity implements Callback {
         et.setEnabled(false);
         //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
-        TextView tv = (TextView) findViewById(R.id.letter);
-
-        String[] chars = {"A","B","C","D","E","F","G","I","L","M","N","O","P","R","S","T"};
-        tv.setText(chars[(int) (Math.random() * 16)]);
+        tv = (TextView) findViewById(R.id.letter);
 
         showReadySteadyGo();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
                 startTimer();
-
+                tv.setText(chars[(int) (Math.random() * 16)]);
                 et.setEnabled(true);
                 et.requestFocus();
                 button_send.setEnabled(true);
