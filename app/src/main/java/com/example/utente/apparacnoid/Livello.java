@@ -12,8 +12,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.KeyEvent.Callback;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +29,7 @@ import org.json.JSONObject;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class Livello extends AppCompatActivity {
+public class Livello extends AppCompatActivity implements Callback {
     int contatore=0;
     int puntiLettera=0;
     int puntiParole=0;
@@ -37,6 +41,8 @@ public class Livello extends AppCompatActivity {
 
     private myDBManager mydbm;
 
+    private Button button_send;
+    EditText et;
 
     private static TextView txtCountDown;
     private static final long startTime = 30 * 1000;
@@ -88,42 +94,98 @@ public class Livello extends AppCompatActivity {
                 Toast.makeText(Livello.this, (String) msg.obj, Toast.LENGTH_LONG).show();
             }
         };
-
         startHandlerThread();
 
 
-        EditText et = (EditText) findViewById(R.id.parolaInserita);
+        button_send = (Button) findViewById(R.id.sender);
+        button_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pressSend();
+            }
+        });
+        button_send.setEnabled(false);
+        txtCountDown = (TextView) findViewById(R.id.txtCountDown);
+        txtCountDown.setText(String.valueOf(""+ startTime / 1000));
 
-        et.requestFocus();
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+        et = (EditText) findViewById(R.id.parolaInserita);
+        et.setEnabled(false);
+        //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         TextView tv = (TextView) findViewById(R.id.letter);
 
         String[] chars = {"A","B","C","D","E","F","G","I","L","M","N","O","P","R","S","T"};
         tv.setText(chars[(int) (Math.random() * 16)]);
 
-// INIZIALIZZAZIONE VARIABILE TIMER
+        showReadySteadyGo();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                startTimer();
 
+                et.setEnabled(true);
+                et.requestFocus();
+                button_send.setEnabled(true);
+
+            }
+        }, 6000);
+
+
+        /*INIZIALIZZAZIONE VARIABILE TIMER
         txtCountDown = (TextView) findViewById(R.id.txtCountDown);
         countDownTimer = new MyCountDownTimer(startTime, interval, this);
         if(txtCountDown!=null){
             txtCountDown.setText(String.valueOf(""+ startTime / 1000));
         }
+        countDownTimer.start();*/
+    }
+
+    public void showReadySteadyGo(){
+        final Toast toast_ready = Toast.makeText(Livello.this,"Ready!", Toast.LENGTH_SHORT);
+        toast_ready.setGravity(Gravity.CENTER, 0, 0);
+
+        final Toast toast_steady = Toast.makeText(Livello.this,"Steady!", Toast.LENGTH_SHORT);
+        toast_steady.setGravity(Gravity.CENTER, 0, 0);
+
+        final Toast toast_go = Toast.makeText(Livello.this,"Go!", Toast.LENGTH_SHORT);
+        toast_go.setGravity(Gravity.CENTER, 0, 0);
+
+
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                try {
+                    toast_ready.show();
+                    Thread.sleep(2000);
+                    toast_steady.show();
+                    Thread.sleep(2000);
+                    toast_go.show();
+                    Thread.sleep(2000);
+                    startTimer();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        thread.start();
+
+    }
+
+    public void startTimer(){
+        countDownTimer = new MyCountDownTimer(startTime, interval, Livello.this);
         countDownTimer.start();
     }
 
 // REAZIONI ALLA PRESSIONE DEL TASTO DI INVIO
-
-
-    public void pressSend(View view){
+    public void pressSend(){
         EditText et = (EditText) findViewById(R.id.parolaInserita);
         TextView tv = (TextView) findViewById(R.id.letter);
         String confronto = tv.getText().toString();
         String parolaInserita= et.getText().toString();
                et.setHint("inserisci la parola");
-
-        //String punti = String.valueOf(puntiLettera);
-        // et.setHint(punti);
         et.setText("");
 
         TextView counter = (TextView) findViewById(R.id.counter);
@@ -133,8 +195,6 @@ public class Livello extends AppCompatActivity {
                 coloraLinea(contatore);
                 counter.setText(Integer.toString(contatore));
                 puntiParole=20*contatore;
-                //String punti = String.valueOf(puntiParole);
-                //et.setHint(punti);
         }
         else{
             et.setHint("parola non valida!");
@@ -142,11 +202,8 @@ public class Livello extends AppCompatActivity {
         }
 
 // INSERIMENTO DELLA QUINTA PAROLA //
-
         if (contatore==5){
-
             countDownTimer.cancel();
-
             int puntiLivello =puntiLettera+puntiParole;
             Intent intent = new Intent (this, Risultati.class);
 
@@ -155,19 +212,14 @@ public class Livello extends AppCompatActivity {
             intent.putExtra("messageParole", contatore);
             intent.putExtra("jsonArray",pixels_array.toString());
            // intent.putExtra("messageLivello",messageLivello);
-
-
             startActivity(intent);
             finish();
         }
     }
 
 // TIMER ____ cambia activity quando il countdown arriva a zero
-
     public class MyCountDownTimer extends CountDownTimer {
-
         Context c;
-
         public MyCountDownTimer(long startTime, long interval, Context c) {
             super(startTime, interval);
             this.c = c;
@@ -189,7 +241,6 @@ public class Livello extends AppCompatActivity {
                 finish();
             }
         }
-
         @Override
         public void onTick(long millisUntilFinished) {
             if(txtCountDown!=null){
@@ -197,7 +248,6 @@ public class Livello extends AppCompatActivity {
             }
         }
     }
-
 // FINE TIMER
 
     void coloraLinea(int i){
@@ -267,8 +317,6 @@ public class Livello extends AppCompatActivity {
 
         //RAGNATELA
         try {
-
-
             for (int i = inizio1; i < fine1; i++) {
                 ((JSONObject) pixels_array.get(i)).put("r", r);
                 ((JSONObject) pixels_array.get(i)).put("g", g);
@@ -330,15 +378,23 @@ public class Livello extends AppCompatActivity {
         mNetworkThread = new NetworkThread(mMainHandler);
         mNetworkThread.start();
         mNetworkHandler = mNetworkThread.getNetworkHandler();
-
         Message msg = mNetworkHandler.obtainMessage();
         msg.what = NetworkThread.SET_SERVER_DATA;
         msg.obj = host_url;
         msg.arg1 = host_port;
         msg.sendToTarget();
-
         handleNetworkRequest(NetworkThread.SET_SERVER_DATA, host_url, host_port ,0);
+    }
 
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_ENTER:
+                pressSend();
+                return true;
+            default:
+                return super.onKeyUp(keyCode, event);
+        }
     }
 
 
