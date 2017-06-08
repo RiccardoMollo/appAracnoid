@@ -9,14 +9,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.KeyEvent.Callback;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -112,65 +110,60 @@ public class Livello extends AppCompatActivity implements Callback {
 
 
         et = (EditText) findViewById(R.id.parolaInserita);
+        et.setText("");
         et.setEnabled(false);
         //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         tv = (TextView) findViewById(R.id.letter);
 
-        showReadySteadyGo();
+        showCountdown();
+    }
+
+    public void showCountdown(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout_toast_1 = inflater.inflate(R.layout.custom_toast_1,
+                (ViewGroup) findViewById(R.id.custom_toast_container_1));
+
+        final Toast toast_1 = new Toast(getApplicationContext());
+        toast_1.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast_1.setDuration(Toast.LENGTH_SHORT);
+        toast_1.setView(layout_toast_1);
+
+        View layout_toast_2 = inflater.inflate(R.layout.custom_toast_2,
+                (ViewGroup) findViewById(R.id.custom_toast_container_2));
+
+        final Toast toast_2 = new Toast(getApplicationContext());
+        toast_2.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast_2.setDuration(Toast.LENGTH_SHORT);
+        toast_2.setView(layout_toast_2);
+
+        View layout_toast_3 = inflater.inflate(R.layout.custom_toast_3,
+                (ViewGroup) findViewById(R.id.custom_toast_container_3));
+
+        final Toast toast_3 = new Toast(getApplicationContext());
+        toast_3.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast_3.setDuration(Toast.LENGTH_SHORT);
+        toast_3.setView(layout_toast_3);
+
+        toast_3.show();
+        toast_2.show();
+        toast_1.show();
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                startTimer();
-                tv.setText(chars[(int) (Math.random() * 16)]);
-                et.setEnabled(true);
-                et.requestFocus();
-                button_send.setEnabled(true);
-
+                launchTimerAndLetter();
             }
-        }, 6000);
+        }, 6500);
 
-
-        /*INIZIALIZZAZIONE VARIABILE TIMER
-        txtCountDown = (TextView) findViewById(R.id.txtCountDown);
-        countDownTimer = new MyCountDownTimer(startTime, interval, this);
-        if(txtCountDown!=null){
-            txtCountDown.setText(String.valueOf(""+ startTime / 1000));
-        }
-        countDownTimer.start();*/
     }
 
-    public void showReadySteadyGo(){
-        final Toast toast_ready = Toast.makeText(Livello.this,"Ready!", Toast.LENGTH_SHORT);
-        toast_ready.setGravity(Gravity.CENTER, 0, 0);
-
-        final Toast toast_steady = Toast.makeText(Livello.this,"Steady!", Toast.LENGTH_SHORT);
-        toast_steady.setGravity(Gravity.CENTER, 0, 0);
-
-        final Toast toast_go = Toast.makeText(Livello.this,"Go!", Toast.LENGTH_SHORT);
-        toast_go.setGravity(Gravity.CENTER, 0, 0);
-
-
-        Thread thread = new Thread(){
-            @Override
-            public void run() {
-                try {
-                    toast_ready.show();
-                    Thread.sleep(2000);
-                    toast_steady.show();
-                    Thread.sleep(2000);
-                    toast_go.show();
-                    Thread.sleep(2000);
-                    startTimer();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        thread.start();
-
+    public void launchTimerAndLetter(){
+        startTimer();
+        tv.setText(chars[(int) (Math.random() * 16)]);
+        et.setEnabled(true);
+        et.requestFocus();
+        button_send.setEnabled(true);
     }
 
     public void startTimer(){
@@ -313,7 +306,7 @@ public class Livello extends AppCompatActivity implements Callback {
 }
 
     void coloraLed(int inizio1, int fine1,int inizio2, int fine2) {
-
+        Handler handler = new Handler();
         //RAGNATELA
         try {
             for (int i = inizio1; i < fine1; i++) {
@@ -321,6 +314,7 @@ public class Livello extends AppCompatActivity implements Callback {
                 ((JSONObject) pixels_array.get(i)).put("g", g);
                 ((JSONObject) pixels_array.get(i)).put("b", b);
             }
+
             for (int i = inizio2; i < fine2; i++) {
                 ((JSONObject) pixels_array.get(i)).put("r", r);
                 ((JSONObject) pixels_array.get(i)).put("g", g);
@@ -330,38 +324,6 @@ public class Livello extends AppCompatActivity implements Callback {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    JSONArray preparePixelsArray() {
-        JSONArray pixels_array = new JSONArray();
-        JSONObject tmp;
-        try {
-            for (int i = 0; i < 1072; i++) {
-                tmp = new JSONObject();
-                tmp.put("a", 0);
-                if (i < 522) {
-                    tmp.put("g", 255);
-                    tmp.put("b", 0);
-                    tmp.put("r", 0);
-                } else if (i < 613) {
-                    tmp.put("r", 255);
-                    tmp.put("g", 0);
-                    tmp.put("b", 0);
-                } else if (i < 791) {
-                    tmp.put("b", 255);
-                    tmp.put("g", 0);
-                    tmp.put("r", 0);
-                } else {
-                    tmp.put("b", 255);
-                    tmp.put("g", 0);
-                    tmp.put("r", 255);
-                }
-                pixels_array.put(tmp);
-            }
-        } catch (JSONException exception) {
-            // No errors expected here
-        }
-        return pixels_array;
     }
 
     private void handleNetworkRequest(int what, Object payload, int arg1, int arg2) {
