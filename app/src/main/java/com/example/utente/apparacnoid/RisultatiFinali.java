@@ -35,10 +35,16 @@ public class RisultatiFinali extends AppCompatActivity {
         risultati_tv = (TextView) findViewById(R.id.risultatiFinali);
         risultato = settings.getInt("punteggioFinale",0);
         nomeGiocatore = settings.getString("nome","");
-        creaLaPrimaListagiocatori(settings);
+        listaGiocatori = getListaGiocatori(settings);
+        if(listaGiocatori.isEmpty()){
+            creaLaPrimaListagiocatori(settings);
+            listaGiocatori = getListaGiocatori(settings);
+        }
+
         risultati_tv.setText("Punteggio finale di " + nomeGiocatore + " : " + risultato);
         giocatore=new Giocatore(nomeGiocatore,risultato);
-        listaGiocatori = getListaGiocatori(settings);
+        //listaGiocatori = getListaGiocatori(settings);
+
         listaGiocatori.add(giocatore);
         Collections.sort(listaGiocatori);
         saveListaGiocatori(settings,listaGiocatori);

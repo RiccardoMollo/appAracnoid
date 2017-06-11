@@ -4,6 +4,7 @@ package com.example.utente.apparacnoid;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
@@ -23,6 +24,11 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -57,6 +63,7 @@ public class Livello extends AppCompatActivity implements Callback {
     private String host_url ;
     private int host_port;
     JSONArray pixels_array=null;
+    JSONArray checkImagePixels;
 
 
     @Override
@@ -75,6 +82,29 @@ public class Livello extends AppCompatActivity implements Callback {
             e.printStackTrace();
         }
 
+        AssetManager am = getApplicationContext().getAssets();
+        InputStream is=null;
+        String StringArray="";
+        try {
+            is = am.open("check.txt");
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(is));
+
+            // do reading, usually loop until end of file reading
+            String mLine;
+
+            while ((mLine = reader.readLine()) != null) {
+                StringArray += mLine;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            checkImagePixels = new JSONArray(StringArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
         SharedPreferences settings = getSharedPreferences("Settings",0);
@@ -117,6 +147,10 @@ public class Livello extends AppCompatActivity implements Callback {
         tv = (TextView) findViewById(R.id.letter);
 
         showCountdown();
+    }
+
+    public void setImageDisplay(JSONArray ja){
+        handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, checkImagePixels, 0 ,0);
     }
 
     public void showCountdown(){
@@ -187,6 +221,7 @@ public class Livello extends AppCompatActivity implements Callback {
                 coloraLinea(contatore);
                 counter.setText(Integer.toString(contatore));
                 puntiParole=20*contatore;
+            setImageDisplay(checkImagePixels);
         }
         else{
             et.setHint("parola non valida!");
@@ -306,7 +341,6 @@ public class Livello extends AppCompatActivity implements Callback {
 }
 
     void coloraLed(int inizio1, int fine1,int inizio2, int fine2) {
-        Handler handler = new Handler();
         //RAGNATELA
         try {
             for (int i = inizio1; i < fine1; i++) {
