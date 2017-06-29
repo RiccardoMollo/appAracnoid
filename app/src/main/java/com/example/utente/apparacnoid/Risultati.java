@@ -2,6 +2,7 @@ package com.example.utente.apparacnoid;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class Risultati extends AppCompatActivity {
 
     JSONArray pixels_array;
+    JSONArray displayPixels;
 
     Unbinder unbinder;
 
@@ -51,8 +58,6 @@ public class Risultati extends AppCompatActivity {
             }
         };
 
-
-
         SharedPreferences.Editor editor = settings.edit();
         livello =  settings.getInt("livello",0);
         punteggioFinale = settings.getInt("punteggioFinale",0);
@@ -66,8 +71,22 @@ public class Risultati extends AppCompatActivity {
         int punteggioLivello = datiPassati.getIntExtra("messagePunti",0);
         int contatore =datiPassati.getIntExtra("messageParole",0);
         String jsonArray = datiPassati.getStringExtra("jsonArray");
+        String displayImageString = "";
+
+        if(contatore==0 || contatore==1 || contatore==2){
+            displayImageString= getJsonString("unhappy.txt");
+        }
+        else{
+            if(contatore==3){
+                displayImageString= getJsonString("meh.txt");
+            }
+            else{
+                displayImageString = getJsonString("happy.txt");
+            }
+        }
         try{
             pixels_array = new JSONArray(jsonArray);
+            displayPixels = new JSONArray((displayImageString));
         }catch (JSONException e){
             e.printStackTrace();
         }
@@ -80,7 +99,6 @@ public class Risultati extends AppCompatActivity {
         TextView tvParole = (TextView) findViewById(R.id.numeroParole);
         tvParole.setText("Parole inserite: "+ contatore+"/5");
 
-
         editor.putInt("livello",livello+1);
         editor.apply();
         editor.putInt("punteggioFinale",punteggioFinale+punteggioLivello);
@@ -88,8 +106,32 @@ public class Risultati extends AppCompatActivity {
 
         startHandlerThread();
         coloraAnello(contatore,livello);
+        setImageDisplay(displayPixels);
+    }
 
+    public void setImageDisplay(JSONArray ja){
+        handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, ja, 0 ,0);
+    }
 
+    public String getJsonString(String txt){
+        AssetManager am = getApplicationContext().getAssets();
+        InputStream is=null;
+        String StringArray="";
+        try {
+            is = am.open(txt);
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(is));
+
+            // do reading, usually loop until end of file reading
+            String mLine;
+
+            while ((mLine = reader.readLine()) != null) {
+                StringArray += mLine;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return StringArray;
     }
 
     void coloraAnello(int cont, int lev){

@@ -64,6 +64,7 @@ public class Livello extends AppCompatActivity implements Callback {
     private int host_port;
     JSONArray pixels_array=null;
     JSONArray checkImagePixels;
+    JSONArray wrongImagePixels;
 
 
     @Override
@@ -82,26 +83,12 @@ public class Livello extends AppCompatActivity implements Callback {
             e.printStackTrace();
         }
 
-        AssetManager am = getApplicationContext().getAssets();
-        InputStream is=null;
-        String StringArray="";
-        try {
-            is = am.open("check.txt");
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(is));
-
-            // do reading, usually loop until end of file reading
-            String mLine;
-
-            while ((mLine = reader.readLine()) != null) {
-                StringArray += mLine;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String checkString = getJsonString("check.txt");
+        String wrongString = getJsonString("wrong.txt");
 
         try {
-            checkImagePixels = new JSONArray(StringArray);
+            checkImagePixels = new JSONArray(checkString);
+            wrongImagePixels = new JSONArray(wrongString);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -149,8 +136,29 @@ public class Livello extends AppCompatActivity implements Callback {
         showCountdown();
     }
 
+    public String getJsonString(String txt){
+        AssetManager am = getApplicationContext().getAssets();
+        InputStream is=null;
+        String StringArray="";
+        try {
+            is = am.open(txt);
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(is));
+
+            // do reading, usually loop until end of file reading
+            String mLine;
+
+            while ((mLine = reader.readLine()) != null) {
+                StringArray += mLine;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return StringArray;
+    }
+
     public void setImageDisplay(JSONArray ja){
-        handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, checkImagePixels, 0 ,0);
+        handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, ja, 0 ,0);
     }
 
     public void showCountdown(){
@@ -225,6 +233,7 @@ public class Livello extends AppCompatActivity implements Callback {
         }
         else{
             et.setHint("parola non valida!");
+            setImageDisplay(wrongImagePixels);
             counter.setText(Integer.toString(contatore));
         }
 
