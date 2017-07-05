@@ -49,6 +49,7 @@ public class Livello extends AppCompatActivity implements Callback {
     EditText et;
     TextView tv;
     String[] chars = {"A","B","C","D","E","F","G","I","L","M","N","O","P","R","S","T"};
+    String[] paroleUsate = new String[4];
 
     private static TextView txtCountDown;
     private static final long startTime = 30 * 1000;
@@ -84,7 +85,7 @@ public class Livello extends AppCompatActivity implements Callback {
         }
 
         String checkString = getJsonString("check.txt");
-        String wrongString = getJsonString("wrong.txt");
+        String wrongString = getJsonString("x.txt");
 
         try {
             checkImagePixels = new JSONArray(checkString);

@@ -30,7 +30,7 @@ public class NuovaPartita extends AppCompatActivity {
     int colore=0;
     int r=0;
     int g=0;
-    int b=0;
+    int b=255;
 
     JSONArray pixels_array;
 
