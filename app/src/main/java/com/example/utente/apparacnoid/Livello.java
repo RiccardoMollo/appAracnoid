@@ -49,7 +49,7 @@ public class Livello extends AppCompatActivity implements Callback {
     EditText et;
     TextView tv;
     String[] chars = {"A","B","C","D","E","F","G","I","L","M","N","O","P","R","S","T"};
-    String[] paroleUsate = new String[4];
+    String[] paroleUsate = {"","","","",""};
 
     private static TextView txtCountDown;
     private static final long startTime = 30 * 1000;
@@ -224,13 +224,14 @@ public class Livello extends AppCompatActivity implements Callback {
         et.setText("");
 
         TextView counter = (TextView) findViewById(R.id.counter);
-        if (parolaInserita.startsWith(confronto) && mydbm.getWordMatches(parolaInserita)){
+        if (parolaInserita.startsWith(confronto) && mydbm.getWordMatches(parolaInserita) && controlloParolaUsata(parolaInserita)){
                 puntiLettera+= (parolaInserita.length()*10);
+                paroleUsate [contatore]= parolaInserita;
                 contatore++;
                 coloraLinea(contatore);
                 counter.setText(Integer.toString(contatore));
                 puntiParole=20*contatore;
-            setImageDisplay(checkImagePixels);
+                setImageDisplay(checkImagePixels);
         }
         else{
             et.setHint("parola non valida!");
@@ -252,6 +253,16 @@ public class Livello extends AppCompatActivity implements Callback {
             startActivity(intent);
             finish();
         }
+    }
+
+    public boolean controlloParolaUsata(String s){
+        boolean b=true;
+        for(int i= 0;i<4;i++){
+            if(paroleUsate[i].equals(s)){
+                b = false;
+            }
+        }
+        return b;
     }
 
 // TIMER ____ cambia activity quando il countdown arriva a zero
