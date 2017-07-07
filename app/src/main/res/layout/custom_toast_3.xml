@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:padding="8dp"
     >
-    <ImageView android:src="@drawable/number_3"
+    <ImageView android:src="@drawable/n3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"

@@ -7,43 +7,57 @@
     android:orientation="vertical"
     tools:context="com.example.utente.apparacnoid.MenuPrincipale"
     android:background="@drawable/background_risultati"
-    >
+    android:weightSum="1">
 
     <TextView
-        android:text="Menù Principale"
-        android:layout_width="wrap_content"
+        android:text="\n PALETTE"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
+        android:paddingTop="50dp"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
         android:id="@+id/menu"
-        android:textSize="50sp"
-        />
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:lineSpacingExtra="14sp"
+        android:textColor="#f7f7f7"
+        android:layout_weight="0.29" />
 
     <Button
         android:text="Nuova Partita"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:paddingTop="10dp"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
         android:id="@+id/nuovapartita"
-        android:textSize="32sp"
         android:onClick="clickNuovaPartita"
+        android:textAppearance="@android:style/TextAppearance"
+        android:textSize="24sp"
+        android:textColor="#f7f7f7"
+        android:textAlignment="center"
+        android:lineSpacingExtra="10sp"
+        android:layout_weight="0.09"
         />
 
     <Button
         android:text="Regolamento"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:paddingTop="10dp"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
         android:id="@+id/regole"
-        android:textSize="32sp"
         android:onClick="clickRegole"
-        />
-
+        android:textAppearance="@android:style/TextAppearance"
+        android:textSize="24sp"
+        android:textColor="#f7f7f7"
+        android:textAlignment="center"
+        android:lineSpacingExtra="10sp"
+        android:layout_weight="0.09" />
 
 
 </LinearLayout>

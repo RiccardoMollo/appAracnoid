@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,38 +9,57 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="50dp"
         android:id="@+id/risultatiFinali"
-        android:textSize="32sp"
-        />
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:textColor="#f7f7f7"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
 
     <Button
         android:id="@+id/replay"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gioca di nuovo"
         android:onClick="replay"
+        android:text="Gioca di nuovo"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:textColor="#f7f7f7"
+        android:layout_below="@+id/risultatiFinali"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
 
-        />
     <Button
         android:id="@+id/exit"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Esci"
         android:onClick="exitGame"
+        android:text="Esci"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:textColor="#f7f7f7"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:layout_below="@+id/replay"
+        android:layout_alignEnd="@+id/replay"
+        android:layout_alignStart="@+id/replay" />
 
-        />
     <ListView
         android:id="@+id/elenco"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:textColor="#f7f7f7"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/exit">
     </ListView>
 
 
 
-</LinearLayout>
+</RelativeLayout>

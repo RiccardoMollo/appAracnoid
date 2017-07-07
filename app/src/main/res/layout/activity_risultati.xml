@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,41 +9,57 @@
 
 
     <TextView
-        android:text="RISULTATI LIVELLO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="50dp"
-        android:id="@+id/titolo"
-        android:textSize="32sp"
-        />
-    <TextView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="50dp"
-        android:id="@+id/puntiLivello"
-        android:textSize="32sp"
-        />
-    <TextView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="50dp"
         android:id="@+id/numeroParole"
-        android:textSize="32sp"
-        />
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:textSize="18sp"
+        android:textColor="#f7f7f7"
+        android:layout_above="@+id/livelloSuccessivo"
+        android:layout_marginBottom="57dp"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/livelloSuccessivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="141dp"
+        android:padding="10dp"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:onClick="newLevel"
+        android:text="Avanti"
+        android:textAlignment="center"
+        android:textColor="#f7f7f7"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/puntiLivello"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Avanti"
-        android:onClick="newLevel"
+        android:paddingTop="10dp"
+        android:textSize="18sp"
+        android:textColor="#f7f7f7"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/numeroParole"
+        android:layout_alignParentStart="true" />
 
-        />
+    <TextView
+        android:id="@+id/titolo"
+        android:text="LIVELLO"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:textSize="40sp"
+        android:textColor="#f7f7f7"
+        android:layout_marginTop="80dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 
-</LinearLayout>
+</RelativeLayout>

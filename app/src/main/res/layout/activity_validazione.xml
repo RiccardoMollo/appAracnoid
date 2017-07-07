@@ -2,137 +2,171 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_risultati"
+    android:background="@drawable/background_validazione"
     android:weightSum="1">
 
 
     <TextView
-        android:text="Schermata di validazione"
-        android:layout_width="wrap_content"
+        android:text="PALETTE"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
+        android:paddingTop="50dp"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
         android:id="@+id/titolo"
-        android:textSize="32sp"
-        />
+        android:textSize="48sp"
+        android:textAlignment="center"
+        android:textColor="#f7f7f7"
+        android:lineSpacingExtra="14sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
-        android:text="OUT"
-        android:layout_width="wrap_content"
+        android:text="Inserisci la combinazione corretta"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
-        android:id="@+id/out"
-        android:textSize="32sp"
-        />
+        android:paddingTop="20dp"
+        android:id="@+id/descrizione"
+        android:textSize="18sp"
+        android:textColor="#f7f7f7"
+        android:textAlignment="center" />
+
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        >
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/outer"
+            android:id="@+id/imageView2"
+            android:gravity="center"
+            android:layout_weight="0.13"/>
 
         <ImageButton
             android:id="@+id/out1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_weight="0.13"
-            app:srcCompat="?attr/colorPrimary" />
+            app:srcCompat="?attr/colorPrimary"
+            style="@android:style/Widget.Material.Light.ImageButton"
+            android:layout_weight="0.13" />
 
         <ImageButton
             android:id="@+id/out2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0.13"
-            app:srcCompat="?attr/actionModeSplitBackground" />
+            app:srcCompat="?attr/actionModeSplitBackground"
+            style="@android:style/Widget.Material.Light.ImageButton" />
 
         <ImageButton
             android:id="@+id/out3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0.13"
-            app:srcCompat="@android:color/holo_green_light" />
+            app:srcCompat="@android:color/holo_green_light"
+            style="@android:style/Widget.Material.Light.ImageButton" />
 
 
     </LinearLayout>
-    <TextView
-        android:text="MID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="50dp"
-        android:id="@+id/mid"
-        android:textSize="32sp"
-        />
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/mid"
+            android:id="@+id/imageView3"
+            android:gravity="center"
+            android:layout_weight="0.13" />
 
         <ImageButton
             android:id="@+id/mid1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0.13"
-            app:srcCompat="?attr/colorPrimary" />
+            app:srcCompat="?attr/colorPrimary"
+            style="@android:style/Widget.Material.ImageButton"/>
 
         <ImageButton
             android:id="@+id/mid2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0.13"
-            app:srcCompat="?attr/actionModeSplitBackground" />
+            app:srcCompat="?attr/actionModeSplitBackground"
+            style="@android:style/Widget.Material.Light.ImageButton" />
 
         <ImageButton
             android:id="@+id/mid3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0.13"
-            app:srcCompat="@android:color/holo_green_light" />
+            app:srcCompat="@android:color/holo_green_light"
+            style="@android:style/Widget.Material.Light.ImageButton" />
 
     </LinearLayout>
-    <TextView
-        android:text="IN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="50dp"
-        android:id="@+id/in"
-        android:textSize="32sp"
-        />
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/inner"
+            android:gravity="center"
+            android:id="@+id/imageView4"
+            android:layout_weight="0.13" />
 
         <ImageButton
             android:id="@+id/in1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0.13"
-            app:srcCompat="?attr/colorPrimary" />
+            app:srcCompat="?attr/colorPrimary"
+            style="@android:style/Widget.Material.Light.ImageButton" />
 
         <ImageButton
             android:id="@+id/in2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0.13"
-            app:srcCompat="?attr/actionModeSplitBackground" />
+            app:srcCompat="?attr/actionModeSplitBackground"
+            style="@android:style/Widget.Material.Light.ImageButton" />
 
         <ImageButton
             android:id="@+id/in3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0.13"
-            app:srcCompat="@android:color/holo_green_light" />
+            app:srcCompat="@android:color/holo_green_light"
+            style="@android:style/Widget.Material.Light.ImageButton" />
 
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>
