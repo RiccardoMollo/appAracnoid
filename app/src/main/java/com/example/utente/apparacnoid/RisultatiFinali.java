@@ -2,11 +2,13 @@ package com.example.utente.apparacnoid;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Button;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,10 +31,12 @@ public class RisultatiFinali extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Typeface typeface=Typeface.createFromAsset(getAssets(), "Comfortaa-Regular.ttf");
         setContentView(R.layout.activity_risultati_finali);
         elenco_lv = (ListView) findViewById(R.id.elenco);
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         risultati_tv = (TextView) findViewById(R.id.risultatiFinali);
+        risultati_tv.setTypeface(typeface);
         risultato = settings.getInt("punteggioFinale",0);
         nomeGiocatore = settings.getString("nome","");
         listaGiocatori = getListaGiocatori(settings);
@@ -50,6 +54,10 @@ public class RisultatiFinali extends AppCompatActivity {
         saveListaGiocatori(settings,listaGiocatori);
         adapter = new myArrayAdapter(this, R.layout.row, listaGiocatori);
         elenco_lv.setAdapter(adapter);
+        Button b1=(Button) findViewById(R.id.replay);
+        Button b2=(Button) findViewById(R.id.exit);
+        b1.setTypeface(typeface);
+        b2.setTypeface(typeface);
     }
 
     private void creaLaPrimaListagiocatori(SharedPreferences settings) {
@@ -81,12 +89,14 @@ public class RisultatiFinali extends AppCompatActivity {
     }
 
     private void provaLista(ArrayList<Giocatore> listaGiocatori) {
+        Typeface typeface=Typeface.createFromAsset(getAssets(), "Comfortaa-Regular.ttf");
         if(listaGiocatori.size()!=0){
             String sequenzaNomi="";
             for(int i=0; i<10;i++){
                 sequenzaNomi = sequenzaNomi + listaGiocatori.get(i).getNome();
             }
             risultati_tv.setText(sequenzaNomi);
+            risultati_tv.setTypeface(typeface);
         }
     }
 

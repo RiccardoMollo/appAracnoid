@@ -4,6 +4,7 @@ package com.example.utente.apparacnoid;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.content.res.AssetManager;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -114,8 +115,11 @@ public class Livello extends AppCompatActivity implements Callback {
         };
         startHandlerThread();
 
+        Typeface typeface=Typeface.createFromAsset(getAssets(), "Comfortaa-Regular.ttf");
+
 
         button_send = (Button) findViewById(R.id.sender);
+        button_send.setTypeface(typeface);
         button_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,14 +129,17 @@ public class Livello extends AppCompatActivity implements Callback {
         button_send.setEnabled(false);
         txtCountDown = (TextView) findViewById(R.id.txtCountDown);
         txtCountDown.setText(String.valueOf(""+ startTime / 1000));
+        txtCountDown.setTypeface(typeface);
 
 
         et = (EditText) findViewById(R.id.parolaInserita);
+        et.setTypeface(typeface);
         et.setText("");
         et.setEnabled(false);
         //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         tv = (TextView) findViewById(R.id.letter);
+        tv.setTypeface(typeface);
 
         showCountdown();
     }

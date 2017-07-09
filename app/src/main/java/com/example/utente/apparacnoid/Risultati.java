@@ -2,12 +2,14 @@ package com.example.utente.apparacnoid;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.content.res.AssetManager;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,13 +93,20 @@ public class Risultati extends AppCompatActivity {
             e.printStackTrace();
         }
         //String livello =datiPassati.getString("messageLivello");
+        Typeface typeface=Typeface.createFromAsset(getAssets(), "Comfortaa-Regular.ttf");
 
         TextView tvLivello = (TextView)findViewById(R.id.titolo);
         tvLivello.setText("Risultati livello "+livello);
+        tvLivello.setTypeface(typeface);
         TextView tvPunti = (TextView) findViewById(R.id.puntiLivello);
         tvPunti.setText("Hai totalizzato "+punteggioLivello+" punti" );
+        tvPunti.setTypeface(typeface);
         TextView tvParole = (TextView) findViewById(R.id.numeroParole);
         tvParole.setText("Parole inserite: "+ contatore+"/5");
+        tvParole.setTypeface(typeface);
+
+        Button button_avanti = (Button) findViewById(R.id.livelloSuccessivo);
+        button_avanti.setTypeface(typeface);
 
         editor.putInt("livello",livello+1);
         editor.apply();

@@ -3,6 +3,8 @@ package com.example.utente.apparacnoid;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -56,6 +59,19 @@ public class NuovaPartita extends AppCompatActivity {
         nome_et=(EditText) findViewById(R.id.nome_et);
         scegli_colore=(Button) findViewById(R.id.scegli_colore);
         avvia = (Button) findViewById(R.id.inizia);
+
+        Typeface typeface=Typeface.createFromAsset(getAssets(), "Comfortaa-Regular.ttf");
+        TextView nome_tv = (TextView) findViewById(R.id.nome_tv);
+        TextView textView1 = (TextView) findViewById(R.id.textView1);
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
+        TextView textView3 = (TextView) findViewById(R.id.textView3);
+        nome_tv.setTypeface(typeface);
+        nome_et.setTypeface(typeface);
+        textView1.setTypeface(typeface);
+        textView2.setTypeface(typeface);
+        textView3.setTypeface(typeface);
+        scegli_colore.setTypeface(typeface);
+        avvia.setTypeface(typeface);
 
         pixels_array = preparePixelsArray();
 
