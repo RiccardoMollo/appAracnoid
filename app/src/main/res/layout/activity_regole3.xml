@@ -7,4 +7,11 @@
     tools:context="com.example.utente.apparacnoid.Regole3"
     android:background="@drawable/regole3">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tomenu"
+        android:background="@android:color/transparent"
+        />
+
 </android.support.constraint.ConstraintLayout>

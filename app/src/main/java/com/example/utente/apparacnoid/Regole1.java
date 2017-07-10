@@ -23,7 +23,6 @@ public class Regole1 extends AppCompatActivity {
     @OnClick(R.id.toregole2)
     public void clickRegole(View view) {
         Intent intent = new Intent(this, Regole2.class);
-
         startActivity(intent);
     }
 }

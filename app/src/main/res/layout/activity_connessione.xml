@@ -4,13 +4,16 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/background_validazione">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Server IP address and port" />
+        android:text="Server IP address and port"
+        android:textSize="25sp"
+        android:id="@+id/server"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -22,55 +25,64 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="172"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="25sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="." />
+            android:text="."
+            android:textSize="25sp"/>
 
         <EditText
             android:id="@+id/second_byte_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="21"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="25sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="." />
+            android:text="."
+            android:textSize="25sp"/>
 
         <EditText
             android:id="@+id/third_byte_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="32"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="25sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="." />
+            android:text="."
+            android:textSize="25sp"/>
 
         <EditText
             android:id="@+id/fourth_byte_ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="85"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="25sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=":" />
+            android:text=":"
+            android:textSize="25dp"/>
 
         <EditText
             android:id="@+id/host_port"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="8080"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="25sp"/>
 
     </LinearLayout>
 
@@ -82,26 +94,23 @@
         android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
-
-        <View
-            android:layout_width="96dp"
-            android:layout_height="match_parent" />
-
-
         <Button
             android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.09"
+            android:background="#DCDCDC"
+            android:lineSpacingExtra="10sp"
+            android:onClick="clickNuovaPartita"
+            android:paddingEnd="50dp"
+            android:paddingStart="50dp"
+            android:paddingTop="10dp"
             android:text="AVANTI"
-            android:textSize="22sp"
-            />
+            android:textAlignment="center"
+            android:textAppearance="@android:style/TextAppearance"
+            android:textSize="25sp" />
 
     </LinearLayout>
-
-
-
-
 
 
 </LinearLayout>

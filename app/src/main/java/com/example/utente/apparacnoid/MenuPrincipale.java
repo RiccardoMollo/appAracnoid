@@ -42,7 +42,7 @@ public class MenuPrincipale extends AppCompatActivity {
 
         Intent intent = new Intent(this, Regole1.class);
         startActivity(intent);
-
+        finish();
     }
 
     /*

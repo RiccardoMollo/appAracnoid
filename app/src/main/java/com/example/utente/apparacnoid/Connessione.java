@@ -3,6 +3,7 @@ package com.example.utente.apparacnoid;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -56,6 +58,13 @@ public class Connessione extends Activity {
         unbinder = ButterKnife.bind(this);
 
         nextActivity.setEnabled(false);
+
+        Typeface typeface=Typeface.createFromAsset(getAssets(), "Comfortaa-Regular.ttf");
+
+        TextView server = (TextView) findViewById(R.id.server);
+        server.setTypeface(typeface);
+        Button next = (Button) findViewById(R.id.next);
+        next.setTypeface(typeface);
 
 
 

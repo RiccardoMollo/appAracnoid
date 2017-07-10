@@ -20,10 +20,6 @@
         <activity android:name=".NuovaPartita" />
         <activity android:name=".Livello" />
         <activity android:name=".Risultati" />
-        <activity
-            android:name=".Regole"
-            android:label="@string/title_activity_regole"
-            android:theme="@style/AppTheme" />
         <activity android:name=".RisultatiFinali" />
         <activity android:name=".Validazione" />
         <activity android:name=".MenuPrincipale" />

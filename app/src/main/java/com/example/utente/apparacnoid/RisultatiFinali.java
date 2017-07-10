@@ -117,7 +117,6 @@ public class RisultatiFinali extends AppCompatActivity {
     public void replay(View view) {
 
         Intent intent = new Intent(this, NuovaPartita.class);
-
         startActivity(intent);
         finish();
 

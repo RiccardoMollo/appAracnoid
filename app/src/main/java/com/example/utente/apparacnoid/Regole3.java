@@ -20,5 +20,12 @@ public class Regole3 extends AppCompatActivity {
         unbinder = ButterKnife.bind(this);
     }
 
+    @OnClick(R.id.tomenu)
+    public void clickRegole(View view) {
+        Intent intent = new Intent(this, MenuPrincipale.class);
+        startActivity(intent);
+        finish();
+    }
+
 
 }
