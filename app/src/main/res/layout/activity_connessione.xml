@@ -108,7 +108,7 @@
             android:text="AVANTI"
             android:textAlignment="center"
             android:textAppearance="@android:style/TextAppearance"
-            android:textSize="25sp" />
+            android:textSize="25sp"/>
 
     </LinearLayout>
 
