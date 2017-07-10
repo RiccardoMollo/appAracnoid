@@ -216,10 +216,4 @@ public class Connessione extends Activity {
         finish();
     }
 
-    @OnClick(R.id.regole)
-    public void clickRegole(View view) {
-        Intent intent = new Intent(this, Regole.class);
-
-        startActivity(intent);
-    }
 }

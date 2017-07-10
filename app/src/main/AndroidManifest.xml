@@ -27,6 +27,9 @@
         <activity android:name=".RisultatiFinali" />
         <activity android:name=".Validazione" />
         <activity android:name=".MenuPrincipale" />
+        <activity android:name=".Regole1" />
+        <activity android:name=".Regole2" />
+        <activity android:name=".Regole3"></activity>
     </application>
 
 </manifest>

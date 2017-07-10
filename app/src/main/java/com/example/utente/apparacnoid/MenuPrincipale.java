@@ -40,7 +40,7 @@ public class MenuPrincipale extends AppCompatActivity {
 
     public void clickRegole(View view) {
 
-        Intent intent = new Intent(this, Regole.class);
+        Intent intent = new Intent(this, Regole1.class);
         startActivity(intent);
 
     }
