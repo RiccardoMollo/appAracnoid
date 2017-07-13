@@ -84,6 +84,7 @@ public class NuovaPartita extends AppCompatActivity {
 
         startHandlerThread();
         setDisplayStart();
+        setWireStart();
 
     }
 
@@ -185,9 +186,9 @@ public class NuovaPartita extends AppCompatActivity {
         //DISPLAY
         try {
 
-            int r = 255;
-            int g = 255;
-            int b = 0;
+            int r = 0;
+            int g = 0;
+            int b = 255;
 
             for (int i = 0; i < pixels_array.length(); i++) {
                 ((JSONObject) pixels_array.get(i)).put("r", r);
@@ -199,6 +200,8 @@ public class NuovaPartita extends AppCompatActivity {
             // There should be no Exception
         }
 
+    }
+    void setWireStart() {
         //RAGNATELA
         try {
 
