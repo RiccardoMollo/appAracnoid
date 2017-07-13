@@ -62,16 +62,16 @@ public class RisultatiFinali extends AppCompatActivity {
 
     private void creaLaPrimaListagiocatori(SharedPreferences settings) {
         ArrayList<Giocatore>lista=new ArrayList<>();
-        lista.add(new Giocatore("ric",1220));
-        lista.add(new Giocatore("luc",960));
-        lista.add(new Giocatore("mak",910));
-        lista.add(new Giocatore("bob",500));
-        lista.add(new Giocatore("tom",360));
-        lista.add(new Giocatore("joe",540));
-        lista.add(new Giocatore("sam",740));
-        lista.add(new Giocatore("puk",980));
-        lista.add(new Giocatore("tic",780));
-        lista.add(new Giocatore("toc",1010));
+        lista.add(new Giocatore("Riky",1220));
+        lista.add(new Giocatore("Fra",960));
+        lista.add(new Giocatore("Ric",910));
+        lista.add(new Giocatore("Marty",500));
+        lista.add(new Giocatore("Ale",360));
+        lista.add(new Giocatore("Sam",540));
+        lista.add(new Giocatore("Cri",740));
+        lista.add(new Giocatore("Joe",980));
+        lista.add(new Giocatore("Fra B.",780));
+        lista.add(new Giocatore("Rob",1010));
         SharedPreferences.Editor prefsEditor = settings.edit();
         Gson gson = new Gson();
         String json = gson.toJson(lista);
