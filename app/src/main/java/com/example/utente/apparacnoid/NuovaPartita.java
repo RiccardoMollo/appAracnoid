@@ -36,6 +36,7 @@ public class NuovaPartita extends AppCompatActivity {
     int b=255;
 
     JSONArray pixels_array;
+    JSONArray display_array;
 
     Unbinder unbinder;
 
@@ -74,6 +75,7 @@ public class NuovaPartita extends AppCompatActivity {
         avvia.setTypeface(typeface);
 
         pixels_array = preparePixelsArray();
+        display_array = preparePixelsArray();
 
         mMainHandler = new Handler() {
             @Override
@@ -190,12 +192,12 @@ public class NuovaPartita extends AppCompatActivity {
             int g = 0;
             int b = 255;
 
-            for (int i = 0; i < pixels_array.length(); i++) {
-                ((JSONObject) pixels_array.get(i)).put("r", r);
-                ((JSONObject) pixels_array.get(i)).put("g", g);
-                ((JSONObject) pixels_array.get(i)).put("b", b);
+            for (int i = 0; i < display_array.length(); i++) {
+                ((JSONObject) display_array.get(i)).put("r", r);
+                ((JSONObject) display_array.get(i)).put("g", g);
+                ((JSONObject) display_array.get(i)).put("b", b);
             }
-            handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, pixels_array, 0 ,0);
+            handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, display_array, 0 ,0);
         } catch (JSONException e) {
             // There should be no Exception
         }
